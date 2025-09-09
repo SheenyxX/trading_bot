@@ -21,7 +21,7 @@ def send_telegram_message(text):
 
 
 # --- 1. Setup exchange (Binance via CCXT) ---
-exchange = ccxt.binance()
+exchange = ccxt.kucoin()
 
 # --- 2. Function to fetch OHLCV ---
 def get_ohlcv(symbol="BTC/USDT", timeframe="15m", limit=500):
