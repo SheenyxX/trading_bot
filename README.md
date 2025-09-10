@@ -1,4 +1,4 @@
-# Crypto Trading Assistant  
+# 🤖 Crypto Trading Assistant  
 
 This project is a Python-based **trade signal tracker** for **BTC/USDT**.  
 It analyzes market structure using **EMA trend detection** and **liquidity zones**, generates trade setups, and tracks their full lifecycle (pending → open → closed).  
@@ -18,9 +18,17 @@ The strategy is designed around **trend-following with liquidity confirmation**,
    - When **EMA20 > EMA50**, the market is in a bullish trend → bot looks for **long trades**.  
    - When **EMA20 < EMA50**, the market is in a bearish trend → bot looks for **short trades**.  
 
-2. **Liquidity Zones**  
-   - The bot identifies areas where price is likely to react (previous highs/lows, consolidations).  
-   - These zones act as **entry confirmation points** where orders are triggered.  
+2. **Liquidity Zone Identification**  
+   The bot identifies areas where liquidity is likely to sit, using a **swing-based approach**:  
+   - **Swing Highs and Lows** → recent highs and lows are treated as zones where stop orders accumulate.  
+   - **Liquidity Sweeps** → if price briefly breaks above a high or below a low and then rejects, the area is marked as a liquidity sweep.  
+   - **Consolidation Zones** → clusters of recent candle closes are flagged as short-term liquidity pools.  
+
+   This logic is simple but effective:  
+   - In an **uptrend**, the bot looks for liquidity below recent lows (potential entry after a sweep).  
+   - In a **downtrend**, it looks for liquidity above recent highs (potential entry after a sweep).  
+
+   This aligns with the idea that **liquidity grabs often precede strong directional moves**.  
 
 3. **Trade Lifecycle Management**  
    - Every trade has a unique **trade ID**.  
@@ -51,3 +59,4 @@ Think of it as a **personal trading assistant**:
 - It records every step so you can review, optimize, and trust the process.  
 
 ---
+```
