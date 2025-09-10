@@ -12,5 +12,19 @@
         "entry_time": null,
         "exit_time": null,
         "exit_reason": null
+    },
+    "BTCUSDT_1h_20250910_190000_L": {
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Long",
+        "entry": 112405.55228560504,
+        "sl": 111955.41123539394,
+        "tp1": 114427.74185912023,
+        "tp2": 113382.4,
+        "signal_time": "2025-09-10T19:00:00+00:00",
+        "status": "pending",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null
     }
 }

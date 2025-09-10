@@ -257,7 +257,50 @@ def update_trades_status(symbol, df, filename="trades.json"):
             json.dump(trades, f, indent=4)
 
 
-# --- Main Run Loop ---
+# --- 10. Display Active Trades ---
+def display_active_trades(tf, filename="trades.json"):
+    """Display all pending and open trades for the current timeframe"""
+    trades = load_trades(filename)
+    
+    # Filter trades for current timeframe that are still active
+    active_trades = {
+        trade_id: trade for trade_id, trade in trades.items() 
+        if trade.get("timeframe") == tf and trade.get("status") in ["pending", "open"]
+    }
+    
+    if active_trades:
+        print(f"📋 Active Trades for {tf}:")
+        for trade_id, trade in active_trades.items():
+            status_emoji = "⏳" if trade["status"] == "pending" else "🔄"
+            
+            # Calculate time since signal
+            try:
+                signal_time = datetime.fromisoformat(trade["signal_time"].replace("Z", "+00:00"))
+                time_diff = datetime.now(timezone.utc) - signal_time
+                hours_ago = int(time_diff.total_seconds() / 3600)
+                time_ago = f"{hours_ago}h ago" if hours_ago > 0 else "Recent"
+            except:
+                time_ago = "Unknown"
+            
+            print(f"  {status_emoji} {trade['type']} | Status: {trade['status'].upper()}")
+            print(f"     Entry: {trade['entry']:.2f} | SL: {trade['sl']:.2f} | TP1: {trade['tp1']:.2f} | TP2: {trade['tp2']:.2f}")
+            print(f"     Signal: {time_ago}")
+            
+            if trade["status"] == "open" and trade.get("entry_time"):
+                try:
+                    entry_time = datetime.fromisoformat(trade["entry_time"].replace("Z", "+00:00"))
+                    entry_diff = datetime.now(timezone.utc) - entry_time
+                    entry_hours = int(entry_diff.total_seconds() / 3600)
+                    entry_ago = f"{entry_hours}h ago" if entry_hours > 0 else "Recently"
+                    print(f"     Opened: {entry_ago}")
+                except:
+                    pass
+            print()
+    else:
+        print(f"📋 No active trades for {tf}")
+
+
+# --- Enhanced Main Run Loop ---
 timeframes = {
     "15m": 778,
     "1h": 490,
@@ -279,8 +322,12 @@ for tf, limit in timeframes.items():
     print(f"EMA50: {df['EMA50'].iloc[-1]:,.2f}")
     print(f"Trend: {trend}")
 
+    # Update trade statuses BEFORE checking for new setups
+    update_trades_status("BTC/USDT", df)
+
+    # Check for new setups
     if setups:
-        print("📊 Current Setup(s):")
+        print("📊 New Setup(s) Detected:")
         for setup in setups:
             print(
                 f"- {setup['type']} | Entry: {setup['entry']:.2f}, "
@@ -289,7 +336,9 @@ for tf, limit in timeframes.items():
             trade_id = f"BTCUSDT_{tf}_{df['timestamp'].iloc[-1].strftime('%Y%m%d_%H%M%S')}_{setup['type'][0]}"
             save_trade(trade_id, setup, tf)
     else:
-        print("📊 No immediate setups detected")
+        print("📊 No new setups detected")
 
-    # Update trade statuses
-    update_trades_status("BTC/USDT", df)
+    # Always display active trades
+    display_active_trades(tf)
+
+    print("-" * 50)
