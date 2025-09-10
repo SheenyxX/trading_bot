@@ -1,4 +1,4 @@
-# Trading Bot 🚀
+# Trading Bot 
 
 An automated trading signal generator that analyzes Bitcoin price movements across multiple timeframes using EMA trend analysis and liquidity zone detection. The bot identifies potential trading setups based on technical patterns and sends real-time alerts via Telegram to help traders spot opportunities.
 
