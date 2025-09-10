@@ -7,11 +7,14 @@ import json
 import os
 import requests
 
-# --- Telegram Bot Setup ---
+# --- Telegram Bot Setup (from environment variables) ---
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 CHAT_ID = os.environ.get("CHAT_ID")
 
 def send_telegram_message(text):
+    if not BOT_TOKEN or not CHAT_ID:
+        print("⚠️ Telegram credentials not set, skipping alert.")
+        return
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     payload = {"chat_id": CHAT_ID, "text": text}
     try:
@@ -83,7 +86,7 @@ def detect_setups(df, trend, zones, tf):
 
             setups.append({
                 "symbol": "BTC/USDT",
-                "timeframe": tf,   # ✅ fixed here
+                "timeframe": tf,
                 "type": "Short",
                 "entry": float(entry_price),
                 "sl": float(ema50 * 1.003),
@@ -104,7 +107,7 @@ def detect_setups(df, trend, zones, tf):
 
             setups.append({
                 "symbol": "BTC/USDT",
-                "timeframe": tf,   # ✅ fixed here
+                "timeframe": tf,
                 "type": "Long",
                 "entry": float(entry_price),
                 "sl": float(ema50 * 0.997),
@@ -167,7 +170,7 @@ def save_trade(trade_id, trade_data, tf):
         send_telegram_message(alert_msg)
 
 
-# --- 9. Update trade status (high/low-based logic with future-candle check) ---
+# --- 9. Update trade status ---
 def update_trades_status(symbol, df, filename="trades.json"):
     trades = load_trades(filename)
     updated = False
@@ -185,47 +188,39 @@ def update_trades_status(symbol, df, filename="trades.json"):
         except Exception:
             signal_time = None
 
-        # ✅ Only check future candles (ignore the signal candle itself)
+        # Only check future candles (ignore the signal candle itself)
         if signal_time and latest_time <= signal_time:
             continue
 
-        # Entry hit (using high/low after the signal candle)
+        # Entry hit
         if status == "pending":
             if trade["type"] == "Long" and latest_low <= trade["entry"]:
                 trade["status"] = "open"
                 trade["entry_time"] = datetime.utcnow().isoformat()
                 updated = True
 
-                msg = (
+                send_telegram_message(
                     f"✅ Trade Update!\n"
                     f"Pair: {trade['symbol']}\n"
                     f"Type: {trade['type']}\n"
                     f"Entry: {trade['entry']:.2f}\n"
-                    f"SL: {trade['sl']:.2f}\n"
-                    f"TP1: {trade['tp1']:.2f}\n"
-                    f"TP2: {trade['tp2']:.2f}\n"
                     f"Status: OPEN"
                 )
-                send_telegram_message(msg)
 
             elif trade["type"] == "Short" and latest_high >= trade["entry"]:
                 trade["status"] = "open"
                 trade["entry_time"] = datetime.utcnow().isoformat()
                 updated = True
 
-                msg = (
+                send_telegram_message(
                     f"✅ Trade Update!\n"
                     f"Pair: {trade['symbol']}\n"
                     f"Type: {trade['type']}\n"
                     f"Entry: {trade['entry']:.2f}\n"
-                    f"SL: {trade['sl']:.2f}\n"
-                    f"TP1: {trade['tp1']:.2f}\n"
-                    f"TP2: {trade['tp2']:.2f}\n"
                     f"Status: OPEN"
                 )
-                send_telegram_message(msg)
 
-        # Exit conditions (using close)
+        # Exit conditions
         elif status == "open":
             latest_close = df["close"].iloc[-1]
 
@@ -236,13 +231,12 @@ def update_trades_status(symbol, df, filename="trades.json"):
                 trade["exit_time"] = datetime.utcnow().isoformat()
                 updated = True
 
-                msg = (
+                send_telegram_message(
                     f"❌ Trade Update!\n"
                     f"Pair: {trade['symbol']}\n"
                     f"Type: {trade['type']}\n"
                     f"Status: CLOSED (SL)"
                 )
-                send_telegram_message(msg)
 
             elif (trade["type"] == "Long" and latest_close >= trade["tp2"]) or \
                  (trade["type"] == "Short" and latest_close <= trade["tp2"]):
@@ -251,18 +245,16 @@ def update_trades_status(symbol, df, filename="trades.json"):
                 trade["exit_time"] = datetime.utcnow().isoformat()
                 updated = True
 
-                msg = (
+                send_telegram_message(
                     f"🎯 Trade Update!\n"
                     f"Pair: {trade['symbol']}\n"
                     f"Type: {trade['type']}\n"
                     f"Status: CLOSED (TP)"
                 )
-                send_telegram_message(msg)
 
     if updated:
         with open(filename, "w") as f:
             json.dump(trades, f, indent=4)
-
 
 
 # --- Main Run Loop ---
