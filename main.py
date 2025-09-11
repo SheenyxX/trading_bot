@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, timezone
 import json
 import os
 import requests
+import uuid
 
 # --- Telegram Bot Setup (from environment variables) ---
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
@@ -23,7 +24,7 @@ def send_telegram_message(text):
         print(f"⚠️ Failed to send Telegram message: {e}")
 
 
-# --- 1. Setup exchange (Binance via CCXT) ---
+# --- 1. Setup exchange (KuCoin via CCXT) ---
 exchange = ccxt.kucoin()
 
 # --- 2. Function to fetch OHLCV ---
@@ -83,6 +84,15 @@ def detect_setups(df, trend, zones, tf):
         if close < ema20 and valid_zones:
             valid_zones.sort(key=lambda z: abs(z["level"] - close))
             nearest_zone = valid_zones[0]
+            
+            # Calculate EMA-based target and zone target
+            ema_spread = abs(ema20 - ema50)
+            ema_target = close - ema_spread * 2
+            zone_target = nearest_zone["level"]
+            
+            # For shorts: TP1 should be higher (hit first), TP2 should be lower
+            tp1 = max(ema_target, zone_target)  # Whichever is closer to current price
+            tp2 = min(ema_target, zone_target)  # Whichever is further from current price
 
             setups.append({
                 "symbol": "BTC/USDT",
@@ -90,8 +100,10 @@ def detect_setups(df, trend, zones, tf):
                 "type": "Short",
                 "entry": float(entry_price),
                 "sl": float(ema50 * 1.003),
-                "tp1": float(close - (ema50 - ema20) * 2),
-                "tp2": float(nearest_zone["level"]),
+                "ema_target": float(ema_target),
+                "nearest_demand_zone": float(zone_target),
+                "tp1": float(tp1),
+                "tp2": float(tp2),
                 "signal_time": last["timestamp"].isoformat(),
                 "status": "pending",
                 "entry_time": None,
@@ -104,6 +116,15 @@ def detect_setups(df, trend, zones, tf):
         if close > ema20 and valid_zones:
             valid_zones.sort(key=lambda z: abs(z["level"] - close))
             nearest_zone = valid_zones[0]
+            
+            # Calculate EMA-based target and zone target
+            ema_spread = abs(ema20 - ema50)
+            ema_target = close + ema_spread * 2
+            zone_target = nearest_zone["level"]
+            
+            # For longs: TP1 should be lower (hit first), TP2 should be higher
+            tp1 = min(ema_target, zone_target)  # Whichever is closer to current price
+            tp2 = max(ema_target, zone_target)  # Whichever is further from current price
 
             setups.append({
                 "symbol": "BTC/USDT",
@@ -111,8 +132,10 @@ def detect_setups(df, trend, zones, tf):
                 "type": "Long",
                 "entry": float(entry_price),
                 "sl": float(ema50 * 0.997),
-                "tp1": float(close + (ema20 - ema50) * 2),
-                "tp2": float(nearest_zone["level"]),
+                "ema_target": float(ema_target),
+                "nearest_supply_zone": float(zone_target),
+                "tp1": float(tp1),
+                "tp2": float(tp2),
                 "signal_time": last["timestamp"].isoformat(),
                 "status": "pending",
                 "entry_time": None,
@@ -154,7 +177,16 @@ def save_trade(trade_id, trade_data, tf):
         except Exception:
             readable_time = trade_data['signal_time']  # fallback
 
-        # Send Telegram alert
+        # Enhanced Telegram alert with liquidity zone info
+        zone_info = ""
+        if trade_data['type'] == "Long" and 'nearest_supply_zone' in trade_data:
+            zone_info = f"\nSupply Zone: {trade_data['nearest_supply_zone']:.2f}"
+        elif trade_data['type'] == "Short" and 'nearest_demand_zone' in trade_data:
+            zone_info = f"\nDemand Zone: {trade_data['nearest_demand_zone']:.2f}"
+        
+        if 'ema_target' in trade_data:
+            zone_info += f"\nEMA Target: {trade_data['ema_target']:.2f}"
+
         alert_msg = (
             f"📢 New Trade Alert!\n"
             f"Pair: {trade_data['symbol']}\n"
@@ -163,7 +195,7 @@ def save_trade(trade_id, trade_data, tf):
             f"Entry: {trade_data['entry']:.2f}\n"
             f"SL: {trade_data['sl']:.2f}\n"
             f"TP1: {trade_data['tp1']:.2f}\n"
-            f"TP2: {trade_data['tp2']:.2f}\n"
+            f"TP2: {trade_data['tp2']:.2f}{zone_info}\n"
             f"Status: {trade_data['status']}\n"
             f"Signal Time: {readable_time}"
         )
@@ -284,6 +316,13 @@ def display_active_trades(tf, filename="trades.json"):
             
             print(f"  {status_emoji} {trade['type']} | Status: {trade['status'].upper()}")
             print(f"     Entry: {trade['entry']:.2f} | SL: {trade['sl']:.2f} | TP1: {trade['tp1']:.2f} | TP2: {trade['tp2']:.2f}")
+            
+            # Show liquidity zone info if available
+            if trade['type'] == "Long" and 'nearest_supply_zone' in trade:
+                print(f"     EMA Target: {trade.get('ema_target', 'N/A'):.2f} | Supply Zone: {trade['nearest_supply_zone']:.2f}")
+            elif trade['type'] == "Short" and 'nearest_demand_zone' in trade:
+                print(f"     EMA Target: {trade.get('ema_target', 'N/A'):.2f} | Demand Zone: {trade['nearest_demand_zone']:.2f}")
+                
             print(f"     Signal: {time_ago}")
             
             if trade["status"] == "open" and trade.get("entry_time"):
@@ -333,7 +372,9 @@ for tf, limit in timeframes.items():
                 f"- {setup['type']} | Entry: {setup['entry']:.2f}, "
                 f"SL: {setup['sl']:.2f}, TP1: {setup['tp1']:.2f}, TP2: {setup['tp2']:.2f}"
             )
-            trade_id = f"BTCUSDT_{tf}_{df['timestamp'].iloc[-1].strftime('%Y%m%d_%H%M%S')}_{setup['type'][0]}"
+            # Fixed trade_id generation with unique identifier
+            unique_id = str(uuid.uuid4())[:8]
+            trade_id = f"BTCUSDT_{tf}_{df['timestamp'].iloc[-1].strftime('%Y%m%d_%H%M%S')}_{setup['type'][0]}_{unique_id}"
             save_trade(trade_id, setup, tf)
     else:
         print("📊 No new setups detected")
