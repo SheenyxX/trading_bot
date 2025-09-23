@@ -8,10 +8,10 @@
         "tp1": 114493.5138013194,
         "tp2": 113485.9,
         "signal_time": "2025-09-10T18:00:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-09-23T17:38:26.775933",
-        "exit_time": null,
-        "exit_reason": null
+        "exit_time": "2025-09-23T18:50:29.104978",
+        "exit_reason": "Stop Loss hit"
     },
     "BTCUSDT_1h_20250910_190000_L": {
         "symbol": "BTC/USDT",
@@ -22,10 +22,10 @@
         "tp1": 114427.74185912023,
         "tp2": 113382.4,
         "signal_time": "2025-09-10T19:00:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-09-23T17:38:27.200753",
-        "exit_time": null,
-        "exit_reason": null
+        "exit_time": "2025-09-23T18:50:29.610680",
+        "exit_reason": "Stop Loss hit"
     },
     "BTCUSDT_4h_20250923_160000_S_1f6463b3": {
         "symbol": "BTC/USDT",
@@ -180,6 +180,38 @@
         "ema_target": 110277.90452824364,
         "nearest_demand_zone": 107260.0,
         "tp1": 110277.90452824364,
+        "tp2": 107260.0,
+        "signal_time": "2025-09-23T16:00:00+00:00",
+        "status": "pending",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null
+    },
+    "BTCUSDT_15m_20250923_184500_S_05524fc2": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "entry": 112559.8871823692,
+        "sl": 112943.84386394639,
+        "ema_target": 111267.21395782559,
+        "nearest_demand_zone": 111655.9,
+        "tp1": 111655.9,
+        "tp2": 111267.21395782559,
+        "signal_time": "2025-09-23T18:45:00+00:00",
+        "status": "pending",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null
+    },
+    "BTCUSDT_4h_20250923_160000_S_3bb07df3": {
+        "symbol": "BTC/USDT",
+        "timeframe": "4h",
+        "type": "Short",
+        "entry": 114427.22692269631,
+        "sl": 114944.93518737679,
+        "ema_target": 109989.55130695517,
+        "nearest_demand_zone": 107260.0,
+        "tp1": 109989.55130695517,
         "tp2": 107260.0,
         "signal_time": "2025-09-23T16:00:00+00:00",
         "status": "pending",
