@@ -490,5 +490,37 @@
         "entry_time": null,
         "exit_time": null,
         "exit_reason": null
+    },
+    "BTCUSDT_15m_20250924_033000_S_bffc8542": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "entry": 112213.45682924896,
+        "sl": 112568.03498105408,
+        "ema_target": 111828.25871069398,
+        "nearest_demand_zone": 111655.9,
+        "tp1": 111828.25871069398,
+        "tp2": 111655.9,
+        "signal_time": "2025-09-24T03:30:00+00:00",
+        "status": "pending",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null
+    },
+    "BTCUSDT_4h_20250924_000000_S_a1e01e17": {
+        "symbol": "BTC/USDT",
+        "timeframe": "4h",
+        "type": "Short",
+        "entry": 114201.02661257295,
+        "sl": 114741.67975849347,
+        "ema_target": 110032.52306996193,
+        "nearest_demand_zone": 107260.0,
+        "tp1": 110032.52306996193,
+        "tp2": 107260.0,
+        "signal_time": "2025-09-24T00:00:00+00:00",
+        "status": "pending",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null
     }
 }
