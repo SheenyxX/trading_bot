@@ -134,10 +134,10 @@
         "tp1": 112071.76859098565,
         "tp2": 111655.9,
         "signal_time": "2025-09-23T17:30:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-09-24T06:29:43.898839",
-        "exit_time": null,
-        "exit_reason": null
+        "exit_time": "2025-09-24T11:16:21.836328",
+        "exit_reason": "Stop Loss hit"
     },
     "BTCUSDT_4h_20250923_160000_S_4d4ef6e1": {
         "symbol": "BTC/USDT",
@@ -166,10 +166,10 @@
         "tp1": 111667.09956118377,
         "tp2": 111655.9,
         "signal_time": "2025-09-23T18:15:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-09-24T06:29:41.806254",
-        "exit_time": null,
-        "exit_reason": null
+        "exit_time": "2025-09-24T11:16:22.339910",
+        "exit_reason": "Stop Loss hit"
     },
     "BTCUSDT_4h_20250923_160000_S_e742e466": {
         "symbol": "BTC/USDT",
@@ -198,10 +198,10 @@
         "tp1": 111655.9,
         "tp2": 111267.21395782559,
         "signal_time": "2025-09-23T18:45:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-09-24T06:29:42.443702",
-        "exit_time": null,
-        "exit_reason": null
+        "exit_time": "2025-09-24T11:16:22.807998",
+        "exit_reason": "Stop Loss hit"
     },
     "BTCUSDT_4h_20250923_160000_S_3bb07df3": {
         "symbol": "BTC/USDT",
@@ -230,10 +230,10 @@
         "tp1": 111655.9,
         "tp2": 111304.12342399516,
         "signal_time": "2025-09-23T19:15:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-09-24T02:45:50.598976",
-        "exit_time": null,
-        "exit_reason": null
+        "exit_time": "2025-09-24T11:16:23.282198",
+        "exit_reason": "Stop Loss hit"
     },
     "BTCUSDT_4h_20250923_160000_S_4a8a9bf1": {
         "symbol": "BTC/USDT",
@@ -262,10 +262,10 @@
         "tp1": 111655.9,
         "tp2": 111073.3902862971,
         "signal_time": "2025-09-23T19:30:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-09-24T02:45:49.926417",
-        "exit_time": null,
-        "exit_reason": null
+        "exit_time": "2025-09-24T11:16:23.769384",
+        "exit_reason": "Stop Loss hit"
     },
     "BTCUSDT_4h_20250923_160000_S_f33ca1e6": {
         "symbol": "BTC/USDT",
@@ -662,6 +662,22 @@
         "tp1": 113082.89331588509,
         "tp2": 113290.3,
         "signal_time": "2025-09-24T10:30:00+00:00",
+        "status": "pending",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null
+    },
+    "BTCUSDT_15m_20250924_111500_L_4015cbce": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Long",
+        "entry": 112546.46339658163,
+        "sl": 112168.7471254099,
+        "ema_target": 113528.17473402205,
+        "nearest_supply_zone": 113290.3,
+        "tp1": 113290.3,
+        "tp2": 113528.17473402205,
+        "signal_time": "2025-09-24T11:15:00+00:00",
         "status": "pending",
         "entry_time": null,
         "exit_time": null,
