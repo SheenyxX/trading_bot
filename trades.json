@@ -1494,9 +1494,9 @@
         "tp1": 111034.6,
         "tp2": 110613.76155692685,
         "signal_time": "2025-09-25T15:30:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-09-25T16:24:51.501683",
-        "exit_time": null,
-        "exit_reason": null
+        "exit_time": "2025-09-25T17:17:12.042392",
+        "exit_reason": "Take Profit hit"
     }
 }
