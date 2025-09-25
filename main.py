@@ -41,11 +41,11 @@ def add_ema(df, ema_periods=[20, 50]):
     return df
 
 # --- 4. Trend Analysis ---
-def analyze_trend(df):
-    last = df.iloc[-1]
-    if last["EMA20"] > last["EMA50"]:
+def analyze_trend(df, lookback=3):
+    """Check EMA alignment with short smoothing to reduce flip-flops"""
+    if df["EMA20"].iloc[-lookback:].mean() > df["EMA50"].iloc[-lookback:].mean():
         return "Bullish trend"
-    elif last["EMA20"] < last["EMA50"]:
+    elif df["EMA20"].iloc[-lookback:].mean() < df["EMA50"].iloc[-lookback:].mean():
         return "Bearish trend"
     else:
         return "Neutral trend"
@@ -73,7 +73,6 @@ def detect_setups(df, trend, zones, tf):
     ema50 = last["EMA50"]
 
     setups = []
-    
     if trend == "Neutral trend":
         return setups
 
@@ -84,15 +83,11 @@ def detect_setups(df, trend, zones, tf):
         if close < ema20 and valid_zones:
             valid_zones.sort(key=lambda z: abs(z["level"] - close))
             nearest_zone = valid_zones[0]
-            
-            # Calculate EMA-based target and zone target
             ema_spread = abs(ema20 - ema50)
             ema_target = close - ema_spread * 2
             zone_target = nearest_zone["level"]
-            
-            # For shorts: TP1 should be higher (hit first), TP2 should be lower
-            tp1 = max(ema_target, zone_target)  # Whichever is closer to current price
-            tp2 = min(ema_target, zone_target)  # Whichever is further from current price
+            tp1 = max(ema_target, zone_target)
+            tp2 = min(ema_target, zone_target)
 
             setups.append({
                 "symbol": "BTC/USDT",
@@ -116,15 +111,11 @@ def detect_setups(df, trend, zones, tf):
         if close > ema20 and valid_zones:
             valid_zones.sort(key=lambda z: abs(z["level"] - close))
             nearest_zone = valid_zones[0]
-            
-            # Calculate EMA-based target and zone target
             ema_spread = abs(ema20 - ema50)
             ema_target = close + ema_spread * 2
             zone_target = nearest_zone["level"]
-            
-            # For longs: TP1 should be lower (hit first), TP2 should be higher
-            tp1 = min(ema_target, zone_target)  # Whichever is closer to current price
-            tp2 = max(ema_target, zone_target)  # Whichever is further from current price
+            tp1 = min(ema_target, zone_target)
+            tp2 = max(ema_target, zone_target)
 
             setups.append({
                 "symbol": "BTC/USDT",
@@ -166,24 +157,20 @@ def save_trade(trade_id, trade_data, tf):
         trades[trade_id] = trade_data
         with open(filename, "w") as f:
             json.dump(trades, f, indent=4)
-
         print(f"💾 Saved trade {trade_id}")
 
-        # Convert UTC to Colombia time (UTC-5)
         try:
             utc_time = datetime.fromisoformat(trade_data['signal_time'].replace("Z", "+00:00"))
             col_time = utc_time.astimezone(timezone(timedelta(hours=-5)))
             readable_time = col_time.strftime("%a, %b %d %Y - %H:%M (COL)")
         except Exception:
-            readable_time = trade_data['signal_time']  # fallback
+            readable_time = trade_data['signal_time']
 
-        # Enhanced Telegram alert with liquidity zone info
         zone_info = ""
         if trade_data['type'] == "Long" and 'nearest_supply_zone' in trade_data:
             zone_info = f"\nSupply Zone: {trade_data['nearest_supply_zone']:.2f}"
         elif trade_data['type'] == "Short" and 'nearest_demand_zone' in trade_data:
             zone_info = f"\nDemand Zone: {trade_data['nearest_demand_zone']:.2f}"
-        
         if 'ema_target' in trade_data:
             zone_info += f"\nEMA Target: {trade_data['ema_target']:.2f}"
 
@@ -201,8 +188,7 @@ def save_trade(trade_id, trade_data, tf):
         )
         send_telegram_message(alert_msg)
 
-
-# --- 9. Update trade status ---
+# --- 9. Update trade status (unchanged from your version) ---
 def update_trades_status(symbol, df, filename="trades.json"):
     trades = load_trades(filename)
     updated = False
@@ -213,99 +199,57 @@ def update_trades_status(symbol, df, filename="trades.json"):
 
     for trade_id, trade in trades.items():
         status = trade.get("status", "pending")
-
-        # Convert saved signal_time to datetime
         try:
             signal_time = datetime.fromisoformat(trade["signal_time"].replace("Z", "+00:00"))
         except Exception:
             signal_time = None
-
-        # Only check future candles (ignore the signal candle itself)
         if signal_time and latest_time <= signal_time:
             continue
 
-        # Entry hit
         if status == "pending":
             if trade["type"] == "Long" and latest_low <= trade["entry"]:
                 trade["status"] = "open"
                 trade["entry_time"] = datetime.utcnow().isoformat()
                 updated = True
-
-                send_telegram_message(
-                    f"✅ Trade Update!\n"
-                    f"Pair: {trade['symbol']}\n"
-                    f"Type: {trade['type']}\n"
-                    f"Entry: {trade['entry']:.2f}\n"
-                    f"Status: OPEN"
-                )
-
+                send_telegram_message(f"✅ Trade Update!\nPair: {trade['symbol']}\nType: {trade['type']}\nEntry: {trade['entry']:.2f}\nStatus: OPEN")
             elif trade["type"] == "Short" and latest_high >= trade["entry"]:
                 trade["status"] = "open"
                 trade["entry_time"] = datetime.utcnow().isoformat()
                 updated = True
+                send_telegram_message(f"✅ Trade Update!\nPair: {trade['symbol']}\nType: {trade['type']}\nEntry: {trade['entry']:.2f}\nStatus: OPEN")
 
-                send_telegram_message(
-                    f"✅ Trade Update!\n"
-                    f"Pair: {trade['symbol']}\n"
-                    f"Type: {trade['type']}\n"
-                    f"Entry: {trade['entry']:.2f}\n"
-                    f"Status: OPEN"
-                )
-
-        # Exit conditions
         elif status == "open":
             latest_close = df["close"].iloc[-1]
-
             if (trade["type"] == "Long" and latest_close <= trade["sl"]) or \
                (trade["type"] == "Short" and latest_close >= trade["sl"]):
                 trade["status"] = "closed"
                 trade["exit_reason"] = "Stop Loss hit"
                 trade["exit_time"] = datetime.utcnow().isoformat()
                 updated = True
-
-                send_telegram_message(
-                    f"❌ Trade Update!\n"
-                    f"Pair: {trade['symbol']}\n"
-                    f"Type: {trade['type']}\n"
-                    f"Status: CLOSED (SL)"
-                )
-
+                send_telegram_message(f"❌ Trade Update!\nPair: {trade['symbol']}\nType: {trade['type']}\nStatus: CLOSED (SL)")
             elif (trade["type"] == "Long" and latest_close >= trade["tp2"]) or \
                  (trade["type"] == "Short" and latest_close <= trade["tp2"]):
                 trade["status"] = "closed"
                 trade["exit_reason"] = "Take Profit hit"
                 trade["exit_time"] = datetime.utcnow().isoformat()
                 updated = True
-
-                send_telegram_message(
-                    f"🎯 Trade Update!\n"
-                    f"Pair: {trade['symbol']}\n"
-                    f"Type: {trade['type']}\n"
-                    f"Status: CLOSED (TP)"
-                )
+                send_telegram_message(f"🎯 Trade Update!\nPair: {trade['symbol']}\nType: {trade['type']}\nStatus: CLOSED (TP)")
 
     if updated:
         with open(filename, "w") as f:
             json.dump(trades, f, indent=4)
 
-
-# --- 10. Display Active Trades ---
+# --- 10. Display Active Trades (same as your version) ---
 def display_active_trades(tf, filename="trades.json"):
-    """Display all pending and open trades for the current timeframe"""
     trades = load_trades(filename)
-    
-    # Filter trades for current timeframe that are still active
     active_trades = {
         trade_id: trade for trade_id, trade in trades.items() 
         if trade.get("timeframe") == tf and trade.get("status") in ["pending", "open"]
     }
-    
     if active_trades:
         print(f"📋 Active Trades for {tf}:")
         for trade_id, trade in active_trades.items():
             status_emoji = "⏳" if trade["status"] == "pending" else "🔄"
-            
-            # Calculate time since signal
             try:
                 signal_time = datetime.fromisoformat(trade["signal_time"].replace("Z", "+00:00"))
                 time_diff = datetime.now(timezone.utc) - signal_time
@@ -313,18 +257,13 @@ def display_active_trades(tf, filename="trades.json"):
                 time_ago = f"{hours_ago}h ago" if hours_ago > 0 else "Recent"
             except:
                 time_ago = "Unknown"
-            
             print(f"  {status_emoji} {trade['type']} | Status: {trade['status'].upper()}")
             print(f"     Entry: {trade['entry']:.2f} | SL: {trade['sl']:.2f} | TP1: {trade['tp1']:.2f} | TP2: {trade['tp2']:.2f}")
-            
-            # Show liquidity zone info if available
             if trade['type'] == "Long" and 'nearest_supply_zone' in trade:
                 print(f"     EMA Target: {trade.get('ema_target', 'N/A'):.2f} | Supply Zone: {trade['nearest_supply_zone']:.2f}")
             elif trade['type'] == "Short" and 'nearest_demand_zone' in trade:
                 print(f"     EMA Target: {trade.get('ema_target', 'N/A'):.2f} | Demand Zone: {trade['nearest_demand_zone']:.2f}")
-                
             print(f"     Signal: {time_ago}")
-            
             if trade["status"] == "open" and trade.get("entry_time"):
                 try:
                     entry_time = datetime.fromisoformat(trade["entry_time"].replace("Z", "+00:00"))
@@ -339,13 +278,23 @@ def display_active_trades(tf, filename="trades.json"):
         print(f"📋 No active trades for {tf}")
 
 
-# --- Enhanced Main Run Loop ---
-timeframes = {
-    "15m": 778,
-    "1h": 490,
-    "4h": 188
-}
+# --- Helper: get anchor trend ---
+def get_anchor_trend(all_trends, all_setups):
+    if all_setups.get("4h"):   # 4h has priority
+        return "4h", all_trends["4h"]
+    elif all_setups.get("1h"): # fallback to 1h
+        return "1h", all_trends["1h"]
+    else:
+        return None, None
 
+# --- Enhanced Main Run Loop with hierarchy ---
+timeframes = {"15m": 778, "1h": 490, "4h": 188}
+
+all_trends = {}
+all_data = {}
+all_setups = {}
+
+# Pass 1: collect data & raw setups
 for tf, limit in timeframes.items():
     print(f"\n=== {tf} timeframe ===")
     df = get_ohlcv("BTC/USDT", timeframe=tf, limit=limit)
@@ -354,32 +303,47 @@ for tf, limit in timeframes.items():
     zones = detect_liquidity_zones(df)
     setups = detect_setups(df, trend, zones, tf)
 
-    latest_close = df['close'].iloc[-1]
+    all_trends[tf] = trend
+    all_data[tf] = (df, zones)
+    all_setups[tf] = setups
 
-    print(f"Latest Close: {latest_close:,.2f}")
+    print(f"Latest Close: {df['close'].iloc[-1]:,.2f}")
     print(f"EMA20: {df['EMA20'].iloc[-1]:,.2f}")
     print(f"EMA50: {df['EMA50'].iloc[-1]:,.2f}")
     print(f"Trend: {trend}")
 
-    # Update trade statuses BEFORE checking for new setups
+# Determine anchor trend (4h first, else 1h)
+anchor_tf, anchor_trend = get_anchor_trend(all_trends, all_setups)
+print(f"\n📌 Anchor timeframe: {anchor_tf} | Trend: {anchor_trend}")
+
+# Pass 2: filter setups by anchor alignment
+for tf, (df, zones) in all_data.items():
+    setups = []
+    trend = all_trends[tf]
+
+    # Only keep anchor setups OR aligned ones
+    if tf == anchor_tf:
+        setups = all_setups[tf]
+    else:
+        if anchor_trend and trend == anchor_trend:
+            setups = all_setups[tf]
+        else:
+            print(f"⚠️ {tf} setups skipped (not aligned with {anchor_tf})")
+
+    # Update statuses before new setups
     update_trades_status("BTC/USDT", df)
 
-    # Check for new setups
+    # Save new setups
     if setups:
         print("📊 New Setup(s) Detected:")
         for setup in setups:
-            print(
-                f"- {setup['type']} | Entry: {setup['entry']:.2f}, "
-                f"SL: {setup['sl']:.2f}, TP1: {setup['tp1']:.2f}, TP2: {setup['tp2']:.2f}"
-            )
-            # Fixed trade_id generation with unique identifier
+            print(f"- {setup['type']} | Entry: {setup['entry']:.2f}, SL: {setup['sl']:.2f}, TP1: {setup['tp1']:.2f}, TP2: {setup['tp2']:.2f}")
             unique_id = str(uuid.uuid4())[:8]
             trade_id = f"BTCUSDT_{tf}_{df['timestamp'].iloc[-1].strftime('%Y%m%d_%H%M%S')}_{setup['type'][0]}_{unique_id}"
             save_trade(trade_id, setup, tf)
     else:
         print("📊 No new setups detected")
 
-    # Always display active trades
+    # Display active trades
     display_active_trades(tf)
-
     print("-" * 50)
