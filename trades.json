@@ -646,8 +646,8 @@
         "tp1": 113148.6317585152,
         "tp2": 113290.3,
         "signal_time": "2025-09-24T10:15:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-25T02:49:24.679332",
         "exit_time": null,
         "exit_reason": null
     },
@@ -662,8 +662,8 @@
         "tp1": 113082.89331588509,
         "tp2": 113290.3,
         "signal_time": "2025-09-24T10:30:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-25T02:49:25.086627",
         "exit_time": null,
         "exit_reason": null
     },
@@ -678,8 +678,8 @@
         "tp1": 113290.3,
         "tp2": 113528.17473402205,
         "signal_time": "2025-09-24T11:15:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-25T02:49:21.578717",
         "exit_time": null,
         "exit_reason": null
     },
@@ -694,8 +694,8 @@
         "tp1": 113290.3,
         "tp2": 113303.88609696281,
         "signal_time": "2025-09-24T11:30:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-25T02:49:21.986783",
         "exit_time": null,
         "exit_reason": null
     },
@@ -710,8 +710,8 @@
         "tp1": 113290.3,
         "tp2": 113527.66629470461,
         "signal_time": "2025-09-24T12:30:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-25T02:49:22.400356",
         "exit_time": null,
         "exit_reason": null
     },
@@ -726,8 +726,8 @@
         "tp1": 113290.3,
         "tp2": 113579.37759401265,
         "signal_time": "2025-09-24T13:15:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-25T02:49:22.808187",
         "exit_time": null,
         "exit_reason": null
     },
@@ -742,8 +742,8 @@
         "tp1": 113290.3,
         "tp2": 113519.855937912,
         "signal_time": "2025-09-24T13:45:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-25T02:49:23.231559",
         "exit_time": null,
         "exit_reason": null
     },
@@ -758,8 +758,8 @@
         "tp1": 113290.3,
         "tp2": 113621.98890346524,
         "signal_time": "2025-09-24T14:15:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-25T02:49:23.642266",
         "exit_time": null,
         "exit_reason": null
     },
@@ -774,8 +774,8 @@
         "tp1": 113290.3,
         "tp2": 113739.3942443608,
         "signal_time": "2025-09-24T14:30:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-25T02:49:24.064747",
         "exit_time": null,
         "exit_reason": null
     },
@@ -790,8 +790,8 @@
         "tp1": 114141.33639245291,
         "tp2": 116118.4,
         "signal_time": "2025-09-24T15:15:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-25T02:49:20.028290",
         "exit_time": null,
         "exit_reason": null
     },
@@ -1094,10 +1094,10 @@
         "tp1": 113952.56716193332,
         "tp2": 116118.4,
         "signal_time": "2025-09-24T22:15:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-09-24T23:17:44.206396",
-        "exit_time": null,
-        "exit_reason": null
+        "exit_time": "2025-09-25T02:49:20.531323",
+        "exit_reason": "Stop Loss hit"
     },
     "BTCUSDT_1h_20250924_220000_L_bf5023cb": {
         "symbol": "BTC/USDT",
@@ -1160,6 +1160,22 @@
         "signal_time": "2025-09-24T23:00:00+00:00",
         "status": "open",
         "entry_time": "2025-09-25T01:26:42.702062",
+        "exit_time": null,
+        "exit_reason": null
+    },
+    "BTCUSDT_15m_20250925_024500_S_fd2c811f": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "entry": 113164.38152389531,
+        "sl": 113524.85706257685,
+        "ema_target": 112750.90364795757,
+        "nearest_demand_zone": 111655.9,
+        "tp1": 112750.90364795757,
+        "tp2": 111655.9,
+        "signal_time": "2025-09-25T02:45:00+00:00",
+        "status": "pending",
+        "entry_time": null,
         "exit_time": null,
         "exit_reason": null
     }
