@@ -1626,5 +1626,21 @@
         "entry_time": "2025-09-26T15:39:52.567578",
         "exit_time": "2025-09-26T17:39:52.806834",
         "exit_reason": "Stop Loss hit"
+    },
+    "BTCUSDT_15m_20250926_211500_S_c9e29adb": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "entry": 109411.72739798659,
+        "sl": 109742.17852346673,
+        "ema_target": 109313.90684659823,
+        "nearest_demand_zone": 108621.9,
+        "tp1": 109313.90684659823,
+        "tp2": 108621.9,
+        "signal_time": "2025-09-26T21:15:00+00:00",
+        "status": "pending",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null
     }
 }
