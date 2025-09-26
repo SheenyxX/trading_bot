@@ -188,7 +188,7 @@ def save_trade(trade_id, trade_data, tf):
         )
         send_telegram_message(alert_msg)
 
-# --- 9. Update trade status (unchanged from your version) ---
+# --- 9. Update trade status (unchanged) ---
 def update_trades_status(symbol, df, filename="trades.json"):
     trades = load_trades(filename)
     updated = False
@@ -239,7 +239,7 @@ def update_trades_status(symbol, df, filename="trades.json"):
         with open(filename, "w") as f:
             json.dump(trades, f, indent=4)
 
-# --- 10. Display Active Trades (same as your version) ---
+# --- 10. Display Active Trades ---
 def display_active_trades(tf, filename="trades.json"):
     trades = load_trades(filename)
     active_trades = {
@@ -279,13 +279,19 @@ def display_active_trades(tf, filename="trades.json"):
 
 
 # --- Helper: get anchor trend ---
-def get_anchor_trend(all_trends, all_setups):
-    if all_setups.get("4h"):   # 4h has priority
+def get_anchor_trend(all_trends):
+    """
+    Determine anchor trend.
+    - 4h Bullish/Bearish overrides everything
+    - else fallback to 1h Bullish/Bearish
+    - else None
+    """
+    if all_trends.get("4h") in ["Bullish trend", "Bearish trend"]:
         return "4h", all_trends["4h"]
-    elif all_setups.get("1h"): # fallback to 1h
+    if all_trends.get("1h") in ["Bullish trend", "Bearish trend"]:
         return "1h", all_trends["1h"]
-    else:
-        return None, None
+    return None, None
+
 
 # --- Enhanced Main Run Loop with hierarchy ---
 timeframes = {"15m": 778, "1h": 490, "4h": 188}
@@ -312,20 +318,24 @@ for tf, limit in timeframes.items():
     print(f"EMA50: {df['EMA50'].iloc[-1]:,.2f}")
     print(f"Trend: {trend}")
 
-# Determine anchor trend (4h first, else 1h)
-anchor_tf, anchor_trend = get_anchor_trend(all_trends, all_setups)
-print(f"\n📌 Anchor timeframe: {anchor_tf} | Trend: {anchor_trend}")
+# Determine anchor trend
+anchor_tf, anchor_trend = get_anchor_trend(all_trends)
+if anchor_tf:
+    print(f"\n📌 Anchor timeframe: {anchor_tf} | Trend: {anchor_trend}")
+else:
+    print("\n⚠️ No valid anchor trend (all Neutral) → skipping trades")
 
 # Pass 2: filter setups by anchor alignment
 for tf, (df, zones) in all_data.items():
     setups = []
     trend = all_trends[tf]
 
-    # Only keep anchor setups OR aligned ones
-    if tf == anchor_tf:
+    if anchor_tf is None:
+        print(f"⚠️ {tf} skipped (no anchor trend)")
+    elif tf == anchor_tf:
         setups = all_setups[tf]
     else:
-        if anchor_trend and trend == anchor_trend:
+        if trend == anchor_trend:
             setups = all_setups[tf]
         else:
             print(f"⚠️ {tf} setups skipped (not aligned with {anchor_tf})")
