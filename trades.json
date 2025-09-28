@@ -2102,8 +2102,8 @@
         "tp1": 109335.03011099718,
         "tp2": 109072.1,
         "signal_time": "2025-09-28T07:15:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-28T07:37:04.609311",
         "exit_time": null,
         "exit_reason": null
     },
