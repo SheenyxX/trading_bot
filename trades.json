@@ -1878,8 +1878,8 @@
         "tp1": 108636.2281020889,
         "tp2": 108621.9,
         "signal_time": "2025-09-27T20:00:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-28T01:41:34.344972",
         "exit_time": null,
         "exit_reason": null
     },
@@ -1894,8 +1894,8 @@
         "tp1": 108697.39056707488,
         "tp2": 108621.9,
         "signal_time": "2025-09-27T20:00:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-28T01:41:34.797160",
         "exit_time": null,
         "exit_reason": null
     },
@@ -1912,6 +1912,22 @@
         "signal_time": "2025-09-27T21:00:00+00:00",
         "status": "open",
         "entry_time": "2025-09-27T22:38:43.182096",
+        "exit_time": null,
+        "exit_reason": null
+    },
+    "BTCUSDT_1h_20250928_010000_S_ab56b3fd": {
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Short",
+        "entry": 109683.82897192314,
+        "sl": 110067.22594383298,
+        "ema_target": 108878.27063814484,
+        "nearest_demand_zone": 108621.9,
+        "tp1": 108878.27063814484,
+        "tp2": 108621.9,
+        "signal_time": "2025-09-28T01:00:00+00:00",
+        "status": "pending",
+        "entry_time": null,
         "exit_time": null,
         "exit_reason": null
     }
