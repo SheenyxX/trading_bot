@@ -1478,10 +1478,10 @@
         "tp1": 111034.6,
         "tp2": 110473.98786894463,
         "signal_time": "2025-09-25T15:15:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-09-28T22:38:40.704391",
-        "exit_time": null,
-        "exit_reason": null
+        "exit_time": "2025-09-28T23:38:02.221231",
+        "exit_reason": "Stop Loss hit"
     },
     "BTCUSDT_15m_20250925_153000_S_c6f2da14": {
         "symbol": "BTC/USDT",
