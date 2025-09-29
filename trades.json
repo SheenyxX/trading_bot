@@ -470,8 +470,8 @@
         "tp1": 110431.74715959778,
         "tp2": 107260.0,
         "signal_time": "2025-09-24T00:00:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-29T15:20:27.963969",
         "exit_time": null,
         "exit_reason": null
     },
@@ -486,8 +486,8 @@
         "tp1": 110281.62110917762,
         "tp2": 107260.0,
         "signal_time": "2025-09-24T00:00:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-29T15:20:28.519502",
         "exit_time": null,
         "exit_reason": null
     },
@@ -518,8 +518,8 @@
         "tp1": 110032.52306996193,
         "tp2": 107260.0,
         "signal_time": "2025-09-24T00:00:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-29T15:20:29.036951",
         "exit_time": null,
         "exit_reason": null
     },
