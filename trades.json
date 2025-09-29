@@ -1302,8 +1302,8 @@
         "tp1": 111655.9,
         "tp2": 110787.21973518163,
         "signal_time": "2025-09-25T07:15:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-29T08:51:08.177912",
         "exit_time": null,
         "exit_reason": null
     },
@@ -1318,8 +1318,8 @@
         "tp1": 111655.9,
         "tp2": 110891.11033896843,
         "signal_time": "2025-09-25T07:30:00+00:00",
-        "status": "pending",
-        "entry_time": null,
+        "status": "open",
+        "entry_time": "2025-09-29T08:51:08.870877",
         "exit_time": null,
         "exit_reason": null
     },
