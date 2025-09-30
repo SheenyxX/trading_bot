@@ -20,8 +20,8 @@ def send_telegram_message(text):
     except Exception as e:
         print(f"⚠️ Failed to send Telegram message: {e}")
 
-# --- 1. Setup exchange (Binance via CCXT) ---
-exchange = ccxt.binance()
+# --- 1. Setup exchange (via CCXT) ---
+exchange = ccxt.kucoin()
 
 # --- 2. Function to fetch OHLCV ---
 def get_ohlcv(symbol="BTC/USDT", timeframe="15m", limit=500):
