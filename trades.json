@@ -2554,10 +2554,10 @@
         "tp1": 115072.55438969588,
         "tp2": 114781.5,
         "signal_time": "2025-09-30T21:15:00+00:00",
-        "status": "pending",
+        "status": "expired",
         "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-09-30T23:17:20.155868+00:00",
+        "exit_reason": "Signal expired",
         "refinements": 3
     }
 }
