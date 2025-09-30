@@ -2458,5 +2458,21 @@
         "entry_time": null,
         "exit_time": null,
         "exit_reason": null
+    },
+    "BTCUSDT_4h_20250930_120000_L_0dca49b3": {
+        "symbol": "BTC/USDT",
+        "timeframe": "4h",
+        "type": "Long",
+        "entry": 112143.47026472486,
+        "sl": 111785.87332106211,
+        "ema_target": 113401.202235392,
+        "nearest_supply_zone": 117900.8,
+        "tp1": 113401.202235392,
+        "tp2": 117900.8,
+        "signal_time": "2025-09-30T12:00:00+00:00",
+        "status": "pending",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null
     }
 }
