@@ -2298,5 +2298,21 @@
         "entry_time": null,
         "exit_time": null,
         "exit_reason": null
+    },
+    "BTCUSDT_15m_20250930_091500_S_0f1f4e13": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "entry": 113853.85652679164,
+        "sl": 114221.98382833233,
+        "ema_target": 113046.43726859098,
+        "nearest_demand_zone": 111479.8,
+        "tp1": 113046.43726859098,
+        "tp2": 111479.8,
+        "signal_time": "2025-09-30T09:15:00+00:00",
+        "status": "pending",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null
     }
 }
