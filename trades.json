@@ -2530,21 +2530,6 @@
         "exit_reason": null,
         "refinements": 1
     },
-    "BTCUSDT_15m_20250930_201500_L": {
-        "symbol": "BTC/USDT",
-        "timeframe": "15m",
-        "type": "Long",
-        "entry": 113546.91879783566,
-        "sl": 113173.98583472605,
-        "tp1": 114581.19374840621,
-        "tp2": 114781.5,
-        "signal_time": "2025-09-30T20:15:00+00:00",
-        "status": "pending",
-        "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
-        "refinements": 1
-    },
     "BTCUSDT_1h_20250930_200000_L": {
         "symbol": "BTC/USDT",
         "timeframe": "1h",
@@ -2559,5 +2544,20 @@
         "exit_time": null,
         "exit_reason": null,
         "refinements": 1
+    },
+    "BTCUSDT_15m_20250930_203000_L": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Long",
+        "entry": 113592.19280623132,
+        "sl": 113211.5902517418,
+        "tp1": 114753.95813511364,
+        "tp2": 114781.5,
+        "signal_time": "2025-09-30T20:30:00+00:00",
+        "status": "pending",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "refinements": 2
     }
 }
