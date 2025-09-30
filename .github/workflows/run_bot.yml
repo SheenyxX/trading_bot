@@ -44,5 +44,10 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update trades.json [skip ci]"
-            git push origin HEAD
+
+            # Ensure we have the latest main to avoid push rejection
+            git pull origin main --rebase
+
+            # Push changes back to main
+            git push origin HEAD:main
           fi
