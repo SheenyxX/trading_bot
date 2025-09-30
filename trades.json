@@ -2409,5 +2409,20 @@
         "exit_time": null,
         "exit_reason": null,
         "refinements": 2
+    },
+    "BTCUSDT_15m_20250930_151500_S": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "entry": 113385.1368238012,
+        "sl": 113761.00387024613,
+        "tp1": 112860.2517849097,
+        "tp2": 111479.8,
+        "signal_time": "2025-09-30T15:15:00+00:00",
+        "status": "open",
+        "entry_time": "2025-09-30T15:18:19.743802+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "refinements": 1
     }
 }
