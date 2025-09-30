@@ -20,8 +20,8 @@ def send_telegram_message(text):
     except Exception as e:
         print(f"⚠️ Failed to send Telegram message: {e}")
 
-# --- 1. Setup exchange (via CCXT) ---
-exchange = ccxt.kucoin()
+# --- 1. Setup exchange (Binance via CCXT) ---
+exchange = ccxt.binance()
 
 # --- 2. Function to fetch OHLCV ---
 def get_ohlcv(symbol="BTC/USDT", timeframe="15m", limit=500):
@@ -201,7 +201,7 @@ def update_trades_status(symbol, df, filename="trades.json"):
         "4h": timedelta(days=3)
     }
 
-    now = datetime.utcnow().replace(tzinfo=timezone.utc)
+    now = datetime.now(timezone.utc)
 
     for trade_id, trade in trades.items():
         status = trade.get("status", "pending")
