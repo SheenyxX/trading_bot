@@ -2665,10 +2665,10 @@
         "tp1": 120008.7258341132,
         "tp2": 117900.8,
         "signal_time": "2025-10-01T20:00:00+00:00",
-        "status": "pending",
+        "status": "expired",
         "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-02T08:25:49.214661+00:00",
+        "exit_reason": "Signal expired",
         "refinements": 1,
         "id": "BTCUSDT_1h_20251001_200000_L"
     }
