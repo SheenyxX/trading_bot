@@ -2681,10 +2681,10 @@
         "tp1": 119935.05210102102,
         "tp2": 119426.3,
         "signal_time": "2025-10-02T13:30:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-10-02T15:20:24.197872+00:00",
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-02T16:24:11.542625+00:00",
+        "exit_reason": "Take Profit hit",
         "refinements": 3,
         "id": "BTCUSDT_15m_20251002_133000_L"
     },
@@ -2697,10 +2697,10 @@
         "tp1": 120058.7821250966,
         "tp2": 119426.3,
         "signal_time": "2025-10-02T15:30:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-10-02T15:40:58.233699+00:00",
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-02T16:24:11.542625+00:00",
+        "exit_reason": "Take Profit hit",
         "refinements": 1,
         "id": "BTCUSDT_15m_20251002_153000_L"
     }
