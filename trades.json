@@ -2703,5 +2703,21 @@
         "exit_reason": "Take Profit hit",
         "refinements": 1,
         "id": "BTCUSDT_15m_20251002_153000_L"
+    },
+    "BTCUSDT_15m_20251003_073000_S": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "entry": 119997.93055469904,
+        "sl": 120361.6079091612,
+        "tp1": 119670.774548374,
+        "tp2": 112668.8,
+        "signal_time": "2025-10-03T07:30:00+00:00",
+        "status": "open",
+        "entry_time": "2025-10-03T07:37:55.620034+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "refinements": 1,
+        "id": "BTCUSDT_15m_20251003_073000_S"
     }
 }
