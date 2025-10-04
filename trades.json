@@ -2857,10 +2857,10 @@
         "tp1": 122981.77287763552,
         "tp2": 123870.3,
         "signal_time": "2025-10-04T06:15:00+00:00",
-        "status": "pending",
+        "status": "expired",
         "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-04T08:22:04.768458+00:00",
+        "exit_reason": "Signal expired",
         "refinements": 3,
         "id": "BTCUSDT_15m_20251004_061500_L"
     }
