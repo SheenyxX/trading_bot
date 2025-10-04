@@ -3001,10 +3001,10 @@
         "tp1": 121563.23411268218,
         "tp2": 119244.5,
         "signal_time": "2025-10-04T17:00:00+00:00",
-        "status": "pending",
+        "status": "expired",
         "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-04T19:14:07.196283+00:00",
+        "exit_reason": "Signal expired",
         "refinements": 3,
         "id": "BTCUSDT_15m_20251004_170000_S"
     }
