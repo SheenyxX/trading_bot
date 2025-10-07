@@ -3673,11 +3673,27 @@
         "tp1": 123163.48404295238,
         "tp2": 122314.4,
         "signal_time": "2025-10-07T08:45:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-10-07T10:20:33.583219+00:00",
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-07T13:30:00.375569+00:00",
+        "exit_reason": "Stop Loss hit",
         "refinements": 2,
         "id": "BTCUSDT_15m_20251007_084500_S"
+    },
+    "BTCUSDT_15m_20251007_131500_L": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Long",
+        "entry": 124385.38272363068,
+        "sl": 124005.45198439031,
+        "tp1": 124857.94975997473,
+        "tp2": 125734.0,
+        "signal_time": "2025-10-07T13:15:00+00:00",
+        "status": "open",
+        "entry_time": "2025-10-07T13:30:02.411846+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "refinements": 1,
+        "id": "BTCUSDT_15m_20251007_131500_L"
     }
 }
