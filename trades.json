@@ -3801,10 +3801,10 @@
         "tp1": 119615.74126303423,
         "tp2": 119244.5,
         "signal_time": "2025-10-07T17:15:00+00:00",
-        "status": "pending",
+        "status": "expired",
         "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-07T19:15:59.476204+00:00",
+        "exit_reason": "Signal expired",
         "refinements": 3,
         "id": "BTCUSDT_15m_20251007_171500_S"
     }
