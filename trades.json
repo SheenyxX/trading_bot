@@ -3551,5 +3551,21 @@
         "exit_reason": "Stop Loss hit",
         "refinements": 1,
         "id": "BTCUSDT_15m_20251006_221500_L"
+    },
+    "BTCUSDT_15m_20251007_023000_S": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "entry": 124816.69929881561,
+        "sl": 125196.10017702528,
+        "tp1": 124407.8402760396,
+        "tp2": 122314.4,
+        "signal_time": "2025-10-07T02:30:00+00:00",
+        "status": "open",
+        "entry_time": "2025-10-07T02:43:44.343977+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "refinements": 1,
+        "id": "BTCUSDT_15m_20251007_023000_S"
     }
 }
