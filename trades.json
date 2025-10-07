@@ -3545,10 +3545,10 @@
         "tp1": 125749.11601805665,
         "tp2": 125734.0,
         "signal_time": "2025-10-06T22:15:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-10-06T22:17:52.855128+00:00",
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-07T01:25:30.901213+00:00",
+        "exit_reason": "Stop Loss hit",
         "refinements": 1,
         "id": "BTCUSDT_15m_20251006_221500_L"
     }
