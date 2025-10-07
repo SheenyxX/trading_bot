@@ -3817,10 +3817,10 @@
         "tp1": 119546.41028393203,
         "tp2": 119244.5,
         "signal_time": "2025-10-07T19:30:00+00:00",
-        "status": "pending",
+        "status": "expired",
         "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-07T21:37:32.035731+00:00",
+        "exit_reason": "Signal expired",
         "refinements": 1,
         "id": "BTCUSDT_15m_20251007_193000_S"
     }
