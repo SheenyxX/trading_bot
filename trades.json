@@ -3881,10 +3881,10 @@
         "tp1": 120123.8150438909,
         "tp2": 108621.9,
         "signal_time": "2025-10-08T04:00:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-10-08T10:43:10.612346+00:00",
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-08T17:18:08.543393+00:00",
+        "exit_reason": "Stop Loss hit",
         "refinements": 1,
         "id": "BTCUSDT_1h_20251008_040000_S"
     },
@@ -4073,10 +4073,10 @@
         "tp1": 121062.03060173296,
         "tp2": 108621.9,
         "signal_time": "2025-10-08T13:00:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-10-08T13:47:40.417413+00:00",
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-08T17:18:08.543393+00:00",
+        "exit_reason": "Stop Loss hit",
         "refinements": 1,
         "id": "BTCUSDT_1h_20251008_130000_S"
     },
@@ -4105,10 +4105,10 @@
         "tp1": 121448.21962026952,
         "tp2": 108621.9,
         "signal_time": "2025-10-08T15:00:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-10-08T15:21:11.114177+00:00",
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-08T17:18:08.543393+00:00",
+        "exit_reason": "Stop Loss hit",
         "refinements": 1,
         "id": "BTCUSDT_1h_20251008_150000_S"
     },
@@ -4143,5 +4143,21 @@
         "exit_reason": null,
         "refinements": 1,
         "id": "BTCUSDT_15m_20251008_164500_L"
+    },
+    "BTCUSDT_15m_20251008_171500_L": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Long",
+        "entry": 122566.27306886711,
+        "sl": 122142.59703998976,
+        "tp1": 124385.25646610583,
+        "tp2": 123870.3,
+        "signal_time": "2025-10-08T17:15:00+00:00",
+        "status": "open",
+        "entry_time": "2025-10-08T17:18:10.814786+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "refinements": 1,
+        "id": "BTCUSDT_15m_20251008_171500_L"
     }
 }
