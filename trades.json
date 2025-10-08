@@ -3897,11 +3897,27 @@
         "tp1": 121126.51976049194,
         "tp2": 121515.4,
         "signal_time": "2025-10-08T05:15:00+00:00",
-        "status": "open",
+        "status": "closed",
         "entry_time": "2025-10-08T05:19:06.432427+00:00",
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-08T05:40:59.555555+00:00",
+        "exit_reason": "Take Profit hit",
         "refinements": 3,
         "id": "BTCUSDT_15m_20251008_051500_S"
+    },
+    "BTCUSDT_15m_20251008_053000_S": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "entry": 121852.68563287916,
+        "sl": 122271.35221649666,
+        "tp1": 120856.70322314183,
+        "tp2": 119244.5,
+        "signal_time": "2025-10-08T05:30:00+00:00",
+        "status": "open",
+        "entry_time": "2025-10-08T05:41:00.330773+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "refinements": 1,
+        "id": "BTCUSDT_15m_20251008_053000_S"
     }
 }
