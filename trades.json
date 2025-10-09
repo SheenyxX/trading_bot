@@ -4591,5 +4591,21 @@
         "exit_reason": "Signal expired",
         "refinements": 3,
         "id": "BTCUSDT_15m_20251009_171500_S"
+    },
+    "BTCUSDT_15m_20251009_193000_S": {
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "entry": 121406.7537873766,
+        "sl": 121869.88958870024,
+        "tp1": 119943.90319081236,
+        "tp2": 120591.8,
+        "signal_time": "2025-10-09T19:30:00+00:00",
+        "status": "open",
+        "entry_time": "2025-10-09T19:38:20.936936+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "refinements": 1,
+        "id": "BTCUSDT_15m_20251009_193000_S"
     }
 }
