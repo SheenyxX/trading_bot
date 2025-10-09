@@ -4441,10 +4441,10 @@
         "tp1": 121262.86721337718,
         "tp2": 121515.4,
         "signal_time": "2025-10-09T05:15:00+00:00",
-        "status": "pending",
+        "status": "expired",
         "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-09T07:19:14.329892+00:00",
+        "exit_reason": "Signal expired",
         "refinements": 3,
         "id": "BTCUSDT_15m_20251009_051500_S"
     }
