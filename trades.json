@@ -4585,10 +4585,10 @@
         "tp1": 119149.5177311673,
         "tp2": 119244.5,
         "signal_time": "2025-10-09T17:15:00+00:00",
-        "status": "pending",
+        "status": "expired",
         "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-09T19:17:03.258138+00:00",
+        "exit_reason": "Signal expired",
         "refinements": 3,
         "id": "BTCUSDT_15m_20251009_171500_S"
     }
