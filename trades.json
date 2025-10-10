@@ -5485,7 +5485,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Long",
-        "status": "open",
+        "status": "closed",
         "strategy": "ranging",
         "slope": 0.08,
         "entry": 121551.37999999999,
@@ -5495,10 +5495,10 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-10-10T13:15:00+00:00",
         "entry_time": "2025-10-10T14:19:36.155137+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-10-10T14:42:46.313412+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 23,
+        "outcome": "loss"
     },
     "BTCUSDT_1h_20251010_130000_S_6b4d27ec": {
         "trade_id": "BTCUSDT_1h_20251010_130000_S_6b4d27ec",
@@ -5579,5 +5579,25 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251010_143000_L_4f4e4902": {
+        "trade_id": "BTCUSDT_15m_20251010_143000_L_4f4e4902",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Long",
+        "status": "closed",
+        "strategy": "ranging",
+        "slope": 0.07,
+        "entry": 121821.8025,
+        "sl": 121339.75574880453,
+        "tp1": 122785.89600239096,
+        "tp2": 123749.9,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-10T14:30:00+00:00",
+        "entry_time": "2025-10-10T14:42:47.667912+00:00",
+        "exit_time": "2025-10-10T14:42:48.532546+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 0,
+        "outcome": "loss"
     }
 }
