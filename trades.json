@@ -1,1 +1,23 @@
-
+{
+    "BTCUSDT_15m_20251010_203000_S_93aedf09": {
+        "trade_id": "BTCUSDT_15m_20251010_203000_S_93aedf09",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -1.65,
+        "entry_method": "EMA_middle",
+        "entry": 118469.74509589572,
+        "sl": 119235.56243520755,
+        "tp1": 116938.11041727205,
+        "tp2": 116172.29307796022,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-10T20:30:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
+    }
+}
