@@ -2,3 +2,4 @@ ccxt
 pandas
 ta
 requests
+hashlib
