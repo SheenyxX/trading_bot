@@ -5519,5 +5519,25 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251010_134500_L_4f4e4902": {
+        "trade_id": "BTCUSDT_15m_20251010_134500_L_4f4e4902",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Long",
+        "status": "pending",
+        "strategy": "ranging",
+        "slope": 0.11,
+        "entry": 121821.8025,
+        "sl": 121473.36782466593,
+        "tp1": 122518.67185066816,
+        "tp2": 123749.9,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-10T13:45:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
