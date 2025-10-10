@@ -18,9 +18,11 @@ def send_telegram_message(text):
         print("⚠️ Telegram credentials not set")
         return
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    payload = {"chat_id": CHAT_ID, "text": text}
+    payload = {"chat_id": CHAT_ID, "text": text, "parse_mode": "HTML"}
     try:
-        requests.post(url, json=payload)
+        response = requests.post(url, json=payload, timeout=10)
+        if response.status_code != 200:
+            print(f"⚠️ Telegram error: {response.text}")
     except Exception as e:
         print(f"⚠️ Failed to send Telegram message: {e}")
 
@@ -66,15 +68,28 @@ def calculate_ema_slope(df, window=20):
     ema_past = df["EMA50"].iloc[-window]
     return ((ema_now - ema_past) / ema_past) * 100
 
+# --- Load Trades ---
+def load_trades(filename="trades.json"):
+    """Load trades from JSON file"""
+    if not os.path.exists(filename):
+        return {}
+    try:
+        with open(filename, "r") as f:
+            data = f.read().strip()
+            if not data:
+                return {}
+            return json.loads(data)
+    except Exception as e:
+        print(f"⚠️ Error loading trades: {e}")
+        return {}
+
 # --- Adaptive Trade Setup Detection ---
-def detect_adaptive_setup(df, tf, zones):
+def detect_adaptive_setup(df, tf, zones, trades):
     """
-    Adaptive entry logic based on EMA50 slope:
-    - Strong trends: Entry between EMAs (40% from EMA50)
-    - Weak/Ranging: Fibonacci retracement (57.5% of swing range)
-    - ATR-based SL: 1.5x ATR
-    - TPs: 2R and 3R
-    - TP2 snaps to nearest liquidity zone
+    Adaptive entry logic with duplicate filtering:
+    - Entry price threshold: 15m=0.3%, 1h=0.5%, 4h=0.8%
+    - Strategy change: Always generate new signal
+    - Direction flip: Always generate new signal
     """
     setups = []
     last = df.iloc[-1]
@@ -103,13 +118,11 @@ def detect_adaptive_setup(df, tf, zones):
 
     # Calculate entry price
     if "strong" in strategy:
-        # Strong trend: Entry between EMAs (40% from EMA50)
         if direction == "Long":
             entry_price = ema50 + 0.4 * (ema20 - ema50)
         else:
             entry_price = ema50 - 0.4 * (ema50 - ema20)
     else:
-        # Weak/Ranging: Fibonacci retracement (57.5% of swing)
         lookback = 50
         recent_high = max(df["high"].iloc[-lookback:])
         recent_low = min(df["low"].iloc[-lookback:])
@@ -120,15 +133,36 @@ def detect_adaptive_setup(df, tf, zones):
         else:
             entry_price = recent_high - 0.575 * swing_range
 
+    # Check for existing pending trades (duplicate filter)
+    existing_pending = [t for t in trades.values() 
+                       if t["timeframe"] == tf and t["status"] == "pending"]
+    
+    if existing_pending:
+        last_trade = existing_pending[-1]
+        
+        # Entry price change thresholds by timeframe
+        thresholds = {"15m": 0.003, "1h": 0.005, "4h": 0.008}
+        entry_threshold = thresholds.get(tf, 0.005)
+        
+        # Calculate % change in entry price
+        entry_change = abs(entry_price - last_trade["entry"]) / last_trade["entry"]
+        
+        # Skip if: same direction + same strategy + entry change below threshold
+        if (direction == last_trade["type"] and 
+            strategy == last_trade.get("strategy") and
+            entry_change < entry_threshold):
+            print(f"   ⏭️  Skipping duplicate: Entry change {entry_change*100:.2f}% < {entry_threshold*100:.1f}%")
+            return []
+
     # ATR-based stop loss (1.5x ATR)
     if direction == "Long":
         sl = entry_price - 1.5 * atr
-        tp1 = entry_price + 2 * (entry_price - sl)  # 2R
-        tp2 = entry_price + 3 * (entry_price - sl)  # 3R
+        tp1 = entry_price + 2 * (entry_price - sl)
+        tp2 = entry_price + 3 * (entry_price - sl)
     else:
         sl = entry_price + 1.5 * atr
-        tp1 = entry_price - 2 * (sl - entry_price)  # 2R
-        tp2 = entry_price - 3 * (sl - entry_price)  # 3R
+        tp1 = entry_price - 2 * (sl - entry_price)
+        tp2 = entry_price - 3 * (sl - entry_price)
 
     # Snap TP2 to nearest liquidity zone
     if direction == "Long":
@@ -153,7 +187,7 @@ def detect_adaptive_setup(df, tf, zones):
     reward = abs(tp1 - entry_price)
     rr_ratio = round(reward / risk, 2) if risk > 0 else 0
 
-    # Build trade structure (schema-compliant for dashboard)
+    # Build trade structure
     setups.append({
         "trade_id": trade_id,
         "symbol": "BTC/USDT",
@@ -177,21 +211,6 @@ def detect_adaptive_setup(df, tf, zones):
     
     return setups
 
-# --- Load Trades ---
-def load_trades(filename="trades.json"):
-    """Load trades from JSON file"""
-    if not os.path.exists(filename):
-        return {}
-    try:
-        with open(filename, "r") as f:
-            data = f.read().strip()
-            if not data:
-                return {}
-            return json.loads(data)
-    except Exception as e:
-        print(f"⚠️ Error loading trades: {e}")
-        return {}
-
 # --- Save Trade ---
 def save_trade(trade, filename="trades.json"):
     """Save trade to JSON and send Telegram notification"""
@@ -205,21 +224,174 @@ def save_trade(trade, filename="trades.json"):
     with open(filename, "w") as f:
         json.dump(trades, f, indent=4)
 
-    # Telegram notification
+    # Telegram notification for new signal
     msg = (
-        f"📢 New Trade Signal\n"
-        f"🆔 {trade['trade_id']}\n\n"
-        f"Pair: {trade['symbol']}\n"
-        f"Timeframe: {trade['timeframe']}\n"
-        f"Strategy: {trade['strategy']} (Slope: {trade['slope']}%)\n"
-        f"Type: {'📈 Long' if trade['type'] == 'Long' else '📉 Short'}\n\n"
-        f"Entry: {trade['entry']:.2f}\n"
-        f"SL: {trade['sl']:.2f} (1.5x ATR)\n"
-        f"TP1: {trade['tp1']:.2f} (2R)\n"
-        f"TP2: {trade['tp2']:.2f} (3R)\n\n"
-        f"Risk/Reward: {trade['rr_ratio']}:1"
+        f"🔔 <b>NEW TRADE SIGNAL</b>\n\n"
+        f"<b>ID:</b> <code>{trade['trade_id']}</code>\n"
+        f"<b>Status:</b> 🟡 PENDING\n\n"
+        f"<b>Pair:</b> {trade['symbol']}\n"
+        f"<b>Timeframe:</b> {trade['timeframe']}\n"
+        f"<b>Strategy:</b> {trade['strategy']} (Slope: {trade['slope']}%)\n"
+        f"<b>Type:</b> {'📈 LONG' if trade['type'] == 'Long' else '📉 SHORT'}\n\n"
+        f"<b>Entry:</b> ${trade['entry']:,.2f}\n"
+        f"<b>Stop Loss:</b> ${trade['sl']:,.2f}\n"
+        f"<b>Take Profit 1:</b> ${trade['tp1']:,.2f} (2R)\n"
+        f"<b>Take Profit 2:</b> ${trade['tp2']:,.2f} (3R)\n\n"
+        f"<b>Risk/Reward:</b> {trade['rr_ratio']}:1"
     )
     send_telegram_message(msg)
+
+# --- Update Trades Status ---
+def update_trades_status(df, filename="trades.json"):
+    """Monitor and update trade status: pending → open → closed/expired"""
+    trades = load_trades(filename)
+    updated = False
+    
+    latest_high = df["high"].iloc[-1]
+    latest_low = df["low"].iloc[-1]
+    latest_close = df["close"].iloc[-1]
+    now = datetime.now(timezone.utc)
+    
+    # Expiry times by timeframe
+    expiry_times = {
+        "15m": timedelta(hours=2),
+        "1h": timedelta(hours=12),
+        "4h": timedelta(days=3)
+    }
+    
+    for trade_id, trade in list(trades.items()):
+        status = trade.get("status", "pending")
+        tf = trade.get("timeframe", "1h")
+        
+        try:
+            signal_time = datetime.fromisoformat(trade["signal_time"].replace("Z", "+00:00"))
+        except:
+            signal_time = None
+        
+        # --- PENDING → OPEN or EXPIRED ---
+        if status == "pending":
+            # Check expiry
+            if signal_time and now - signal_time > expiry_times.get(tf, timedelta(hours=12)):
+                trade["status"] = "expired"
+                trade["exit_reason"] = "Signal expired"
+                trade["exit_time"] = now.isoformat()
+                updated = True
+                
+                msg = (
+                    f"⏱️ <b>TRADE EXPIRED</b>\n\n"
+                    f"<b>ID:</b> <code>{trade_id}</code>\n"
+                    f"<b>Status:</b> ⚫ EXPIRED\n\n"
+                    f"<b>Reason:</b> Signal timeout ({expiry_times.get(tf)})\n"
+                    f"<b>Pair:</b> {trade['symbol']}\n"
+                    f"<b>Type:</b> {trade['type']}"
+                )
+                send_telegram_message(msg)
+            
+            # Check if entry hit
+            elif trade["type"] == "Long" and latest_low <= trade["entry"]:
+                trade["status"] = "open"
+                trade["entry_time"] = now.isoformat()
+                updated = True
+                
+                msg = (
+                    f"✅ <b>TRADE OPENED</b>\n\n"
+                    f"<b>ID:</b> <code>{trade_id}</code>\n"
+                    f"<b>Status:</b> 🟢 OPEN\n\n"
+                    f"<b>Pair:</b> {trade['symbol']}\n"
+                    f"<b>Type:</b> {'📈 LONG' if trade['type'] == 'Long' else '📉 SHORT'}\n"
+                    f"<b>Entry:</b> ${trade['entry']:,.2f}\n"
+                    f"<b>Current Price:</b> ${latest_close:,.2f}"
+                )
+                send_telegram_message(msg)
+            
+            elif trade["type"] == "Short" and latest_high >= trade["entry"]:
+                trade["status"] = "open"
+                trade["entry_time"] = now.isoformat()
+                updated = True
+                
+                msg = (
+                    f"✅ <b>TRADE OPENED</b>\n\n"
+                    f"<b>ID:</b> <code>{trade_id}</code>\n"
+                    f"<b>Status:</b> 🟢 OPEN\n\n"
+                    f"<b>Pair:</b> {trade['symbol']}\n"
+                    f"<b>Type:</b> {'📈 LONG' if trade['type'] == 'Long' else '📉 SHORT'}\n"
+                    f"<b>Entry:</b> ${trade['entry']:,.2f}\n"
+                    f"<b>Current Price:</b> ${latest_close:,.2f}"
+                )
+                send_telegram_message(msg)
+        
+        # --- OPEN → CLOSED ---
+        elif status == "open":
+            # Check stop loss
+            if ((trade["type"] == "Long" and latest_close <= trade["sl"]) or 
+                (trade["type"] == "Short" and latest_close >= trade["sl"])):
+                
+                trade["status"] = "closed"
+                trade["exit_reason"] = "Stop Loss"
+                trade["exit_time"] = now.isoformat()
+                trade["outcome"] = "loss"
+                
+                # Calculate duration
+                if trade.get("entry_time"):
+                    try:
+                        entry_dt = datetime.fromisoformat(trade["entry_time"].replace("Z", "+00:00"))
+                        trade["duration_minutes"] = int((now - entry_dt).total_seconds() / 60)
+                    except:
+                        pass
+                
+                updated = True
+                
+                msg = (
+                    f"❌ <b>TRADE CLOSED - STOP LOSS</b>\n\n"
+                    f"<b>ID:</b> <code>{trade_id}</code>\n"
+                    f"<b>Status:</b> 🔴 CLOSED\n\n"
+                    f"<b>Pair:</b> {trade['symbol']}\n"
+                    f"<b>Type:</b> {trade['type']}\n"
+                    f"<b>Entry:</b> ${trade['entry']:,.2f}\n"
+                    f"<b>Exit:</b> ${latest_close:,.2f}\n"
+                    f"<b>Result:</b> LOSS 📉"
+                )
+                if trade.get("duration_minutes"):
+                    msg += f"\n<b>Duration:</b> {trade['duration_minutes']} minutes"
+                send_telegram_message(msg)
+            
+            # Check take profit
+            elif ((trade["type"] == "Long" and latest_close >= trade["tp2"]) or 
+                  (trade["type"] == "Short" and latest_close <= trade["tp2"])):
+                
+                trade["status"] = "closed"
+                trade["exit_reason"] = "Take Profit"
+                trade["exit_time"] = now.isoformat()
+                trade["outcome"] = "win"
+                
+                # Calculate duration
+                if trade.get("entry_time"):
+                    try:
+                        entry_dt = datetime.fromisoformat(trade["entry_time"].replace("Z", "+00:00"))
+                        trade["duration_minutes"] = int((now - entry_dt).total_seconds() / 60)
+                    except:
+                        pass
+                
+                updated = True
+                
+                msg = (
+                    f"🎯 <b>TRADE CLOSED - TAKE PROFIT</b>\n\n"
+                    f"<b>ID:</b> <code>{trade_id}</code>\n"
+                    f"<b>Status:</b> 🟢 CLOSED\n\n"
+                    f"<b>Pair:</b> {trade['symbol']}\n"
+                    f"<b>Type:</b> {trade['type']}\n"
+                    f"<b>Entry:</b> ${trade['entry']:,.2f}\n"
+                    f"<b>Exit:</b> ${latest_close:,.2f}\n"
+                    f"<b>Result:</b> WIN 🎉"
+                )
+                if trade.get("duration_minutes"):
+                    msg += f"\n<b>Duration:</b> {trade['duration_minutes']} minutes"
+                send_telegram_message(msg)
+    
+    # Save if any updates
+    if updated:
+        with open(filename, "w") as f:
+            json.dump(trades, f, indent=4)
 
 # --- Main Execution ---
 def main():
@@ -240,26 +412,42 @@ def main():
             df = get_ohlcv("BTC/USDT", timeframe=tf, limit=limit)
             df = add_indicators(df)
             
+            # Load existing trades
+            trades = load_trades()
+            
+            # Update status of existing trades first
+            update_trades_status(df)
+            
+            # Reload trades after updates
+            trades = load_trades()
+            
             # Detect liquidity zones
             zones = detect_liquidity_zones(df)
             
-            # Detect adaptive setups
-            setups = detect_adaptive_setup(df, tf, zones)
+            # Detect adaptive setups (with duplicate filtering)
+            setups = detect_adaptive_setup(df, tf, zones, trades)
 
             # Print market state
-            print(f"Close: {df['close'].iloc[-1]:,.2f}")
-            print(f"EMA20: {df['EMA20'].iloc[-1]:,.2f}")
-            print(f"EMA50: {df['EMA50'].iloc[-1]:,.2f}")
+            print(f"Close: ${df['close'].iloc[-1]:,.2f}")
+            print(f"EMA20: ${df['EMA20'].iloc[-1]:,.2f}")
+            print(f"EMA50: ${df['EMA50'].iloc[-1]:,.2f}")
             print(f"ATR: {df['ATR'].iloc[-1]:.2f}")
-            print(f"Liquidity Zones: {len(zones)}")
+            print(f"Zones: {len(zones)}")
             
-            # Save setups
+            # Save new setups
             for setup in setups:
                 save_trade(setup)
-                print(f"✅ {setup['type']} setup saved | Strategy: {setup['strategy']} | RR: {setup['rr_ratio']}:1\n")
+                print(f"✅ {setup['type']} signal | Strategy: {setup['strategy']} | RR: {setup['rr_ratio']}:1")
+            
+            if not setups:
+                print("   No new signals generated")
+            
+            print()
                 
         except Exception as e:
             print(f"❌ Error processing {tf}: {e}\n")
+            import traceback
+            traceback.print_exc()
 
 if __name__ == "__main__":
     main()
