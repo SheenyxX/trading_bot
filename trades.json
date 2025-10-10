@@ -19,5 +19,26 @@
         "exit_reason": "Signal expired",
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251010_233000_S_85758025": {
+        "trade_id": "BTCUSDT_15m_20251010_233000_S_85758025",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "open",
+        "strategy": "strong_down",
+        "slope": -2.64,
+        "entry_method": "EMA_middle",
+        "entry": 115624.64872509004,
+        "sl": 118001.38407580901,
+        "tp1": 110871.1780236521,
+        "tp2": 108494.44267293313,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-10T23:30:00+00:00",
+        "entry_time": "2025-10-10T23:37:23.674715+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
