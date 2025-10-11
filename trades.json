@@ -166,5 +166,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251011_110000_S_2f80757d": {
+        "trade_id": "BTCUSDT_15m_20251011_110000_S_2f80757d",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "open",
+        "strategy": "strong_down",
+        "slope": -1.06,
+        "entry_method": "EMA_middle",
+        "entry": 112211.10883074556,
+        "sl": 112937.0402279342,
+        "tp1": 110759.2460363683,
+        "tp2": 102500.0,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-11T11:00:00+00:00",
+        "entry_time": "2025-10-11T11:14:18.216687+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
