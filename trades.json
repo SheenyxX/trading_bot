@@ -208,5 +208,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251011_120000_S_43aa2564": {
+        "trade_id": "BTCUSDT_1h_20251011_120000_S_43aa2564",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -2.16,
+        "entry_method": "EMA_middle",
+        "entry": 115160.87368715147,
+        "sl": 117255.08518148381,
+        "tp1": 110972.45069848679,
+        "tp2": 108621.9,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-11T12:00:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
