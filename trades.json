@@ -313,5 +313,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251012_160000_S_9f2a01c6": {
+        "trade_id": "BTCUSDT_1h_20251012_160000_S_9f2a01c6",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Short",
+        "status": "open",
+        "strategy": "weak_down",
+        "slope": -0.58,
+        "entry_method": "liquidity_zone",
+        "entry": 113939.5,
+        "sl": 115414.47967147513,
+        "tp1": 110989.54065704974,
+        "tp2": 108621.9,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-12T16:00:00+00:00",
+        "entry_time": "2025-10-12T16:21:39.514770+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
