@@ -613,7 +613,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -1.09,
         "entry_method": "EMA_middle",
@@ -624,10 +624,10 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-10-14T12:30:00+00:00",
         "entry_time": "2025-10-14T14:21:06.401212+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-10-14T16:25:43.752047+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 124,
+        "outcome": "loss"
     },
     "BTCUSDT_1h_20251014_120000_S_f08d006e": {
         "trade_id": "BTCUSDT_1h_20251014_120000_S_f08d006e",
@@ -676,7 +676,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -0.98,
         "entry_method": "EMA_middle",
@@ -687,17 +687,17 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-10-14T14:15:00+00:00",
         "entry_time": "2025-10-14T14:21:07.661365+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-10-14T16:25:43.752047+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 124,
+        "outcome": "loss"
     },
     "BTCUSDT_15m_20251014_144500_S_4b11efe1": {
         "trade_id": "BTCUSDT_15m_20251014_144500_S_4b11efe1",
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -0.86,
         "entry_method": "EMA_middle",
@@ -708,9 +708,9 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-10-14T14:45:00+00:00",
         "entry_time": "2025-10-14T14:45:14.829992+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-10-14T16:25:43.752047+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 100,
+        "outcome": "loss"
     }
 }
