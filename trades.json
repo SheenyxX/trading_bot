@@ -754,5 +754,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251016_184500_S_750abf63": {
+        "trade_id": "BTCUSDT_15m_20251016_184500_S_750abf63",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -1.11,
+        "entry_method": "EMA_middle",
+        "entry": 109467.6747277171,
+        "sl": 110437.51646296828,
+        "tp1": 107527.99125721472,
+        "tp2": 106558.14952196353,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-16T18:45:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
