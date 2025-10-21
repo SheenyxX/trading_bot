@@ -1306,7 +1306,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -0.92,
         "entry_method": "EMA_middle",
@@ -1317,9 +1317,9 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-10-21T10:15:00+00:00",
         "entry_time": "2025-10-21T11:17:07.081642+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-10-21T12:43:09.183614+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 86,
+        "outcome": "loss"
     }
 }
