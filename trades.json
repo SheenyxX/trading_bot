@@ -1174,5 +1174,26 @@
         "exit_reason": "Stop Loss",
         "duration_minutes": 77,
         "outcome": "loss"
+    },
+    "BTCUSDT_15m_20251021_051500_S_de4a6fb4": {
+        "trade_id": "BTCUSDT_15m_20251021_051500_S_de4a6fb4",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -0.8,
+        "entry_method": "EMA_middle",
+        "entry": 109394.37461587093,
+        "sl": 109924.02228607329,
+        "tp1": 108335.0792754662,
+        "tp2": 106119.5,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-21T05:15:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
