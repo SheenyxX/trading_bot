@@ -1552,5 +1552,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251027_080000_L_5c731afc": {
+        "trade_id": "BTCUSDT_1h_20251027_080000_L_5c731afc",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Long",
+        "status": "pending",
+        "strategy": "strong_up",
+        "slope": 0.99,
+        "entry_method": "EMA_middle",
+        "entry": 113832.39549491537,
+        "sl": 113003.96664424316,
+        "tp1": 115489.25319625979,
+        "tp2": 116317.682046932,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-27T08:00:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
