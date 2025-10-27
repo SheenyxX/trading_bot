@@ -1510,5 +1510,26 @@
         "exit_reason": "Signal expired",
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251027_030000_L_acadf02b": {
+        "trade_id": "BTCUSDT_1h_20251027_030000_L_acadf02b",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Long",
+        "status": "pending",
+        "strategy": "strong_up",
+        "slope": 0.82,
+        "entry_method": "EMA_middle",
+        "entry": 113251.000754873,
+        "sl": 112445.41628606593,
+        "tp1": 114862.16969248716,
+        "tp2": 115968.8,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-27T03:00:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
