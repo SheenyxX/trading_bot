@@ -1573,5 +1573,26 @@
         "exit_reason": "Signal expired",
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251029_173000_S_01133be5": {
+        "trade_id": "BTCUSDT_15m_20251029_173000_S_01133be5",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "weak_down",
+        "slope": -0.57,
+        "entry_method": "liquidity_zone",
+        "entry": 111929.7,
+        "sl": 112459.35416315772,
+        "tp1": 110870.39167368454,
+        "tp2": 110340.73751052681,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-29T17:30:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
