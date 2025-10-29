@@ -1537,7 +1537,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "4h",
         "type": "Long",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_up",
         "slope": 0.8,
         "entry_method": "EMA_middle",
@@ -1548,10 +1548,10 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-10-27T04:00:00+00:00",
         "entry_time": "2025-10-29T15:45:29.140544+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-10-29T23:39:16.258221+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 473,
+        "outcome": "loss"
     },
     "BTCUSDT_1h_20251027_080000_L_5c731afc": {
         "trade_id": "BTCUSDT_1h_20251027_080000_L_5c731afc",
@@ -1579,7 +1579,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "weak_down",
         "slope": -0.57,
         "entry_method": "liquidity_zone",
@@ -1590,10 +1590,10 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-10-29T17:30:00+00:00",
         "entry_time": "2025-10-29T18:30:52.751976+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-10-29T23:39:16.258221+00:00",
+        "exit_reason": "Take Profit",
+        "duration_minutes": 308,
+        "outcome": "win"
     },
     "BTCUSDT_15m_20251029_191500_S_1fabece8": {
         "trade_id": "BTCUSDT_15m_20251029_191500_S_1fabece8",
@@ -1663,7 +1663,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "pending",
+        "status": "expired",
         "strategy": "weak_down",
         "slope": -0.69,
         "entry_method": "liquidity_zone",
@@ -1674,8 +1674,8 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-10-29T21:30:00+00:00",
         "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-10-29T23:39:16.258221+00:00",
+        "exit_reason": "Signal expired",
         "duration_minutes": null,
         "outcome": null
     }
