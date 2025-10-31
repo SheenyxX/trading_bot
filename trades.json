@@ -1993,5 +1993,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251031_030000_S_98831241": {
+        "trade_id": "BTCUSDT_1h_20251031_030000_S_98831241",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Short",
+        "status": "open",
+        "strategy": "strong_down",
+        "slope": -0.94,
+        "entry_method": "EMA_middle",
+        "entry": 109484.94428362208,
+        "sl": 110843.58288471139,
+        "tp1": 106767.66708144348,
+        "tp2": 103500.0,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-10-31T03:00:00+00:00",
+        "entry_time": "2025-10-31T03:11:25.592948+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
