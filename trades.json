@@ -2644,5 +2644,26 @@
         "exit_reason": "Stop Loss",
         "duration_minutes": 582,
         "outcome": "loss"
+    },
+    "BTCUSDT_4h_20251106_160000_S_602894da": {
+        "trade_id": "BTCUSDT_4h_20251106_160000_S_602894da",
+        "symbol": "BTC/USDT",
+        "timeframe": "4h",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -1.06,
+        "entry_method": "EMA_middle",
+        "entry": 105294.74750893385,
+        "sl": 107621.66641903385,
+        "tp1": 100640.90968873387,
+        "tp2": 98313.99077863387,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-11-06T16:00:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
