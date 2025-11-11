@@ -2980,5 +2980,26 @@
         "exit_reason": "Signal expired",
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251111_030000_L_daf1fb32": {
+        "trade_id": "BTCUSDT_1h_20251111_030000_L_daf1fb32",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Long",
+        "status": "open",
+        "strategy": "weak_up",
+        "slope": 0.58,
+        "entry_method": "liquidity_zone",
+        "entry": 106314.3,
+        "sl": 105147.21468181972,
+        "tp1": 108648.47063636057,
+        "tp2": 111235.0,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-11-11T03:00:00+00:00",
+        "entry_time": "2025-11-11T03:57:00.015382+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
