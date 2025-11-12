@@ -3169,5 +3169,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251112_144500_L_0d88979f": {
+        "trade_id": "BTCUSDT_15m_20251112_144500_L_0d88979f",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Long",
+        "status": "open",
+        "strategy": "weak_up",
+        "slope": 0.64,
+        "entry_method": "liquidity_zone",
+        "entry": 104678.9,
+        "sl": 104286.21577513915,
+        "tp1": 105464.26844972168,
+        "tp2": 106665.5,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-11-12T14:45:00+00:00",
+        "entry_time": "2025-11-12T14:46:21.141193+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
