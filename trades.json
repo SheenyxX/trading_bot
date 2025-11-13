@@ -3316,5 +3316,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251113_220000_S_933880d6": {
+        "trade_id": "BTCUSDT_1h_20251113_220000_S_933880d6",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -1.06,
+        "entry_method": "EMA_middle",
+        "entry": 101473.26274554791,
+        "sl": 102908.1643487836,
+        "tp1": 98603.45953907653,
+        "tp2": 97168.55793584084,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-11-13T22:00:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
