@@ -3400,5 +3400,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_4h_20251114_040000_S_a29b26b5": {
+        "trade_id": "BTCUSDT_4h_20251114_040000_S_a29b26b5",
+        "symbol": "BTC/USDT",
+        "timeframe": "4h",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -0.86,
+        "entry_method": "EMA_middle",
+        "entry": 102536.78619161027,
+        "sl": 104929.54420466832,
+        "tp1": 97751.27016549418,
+        "tp2": 95358.51215243613,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-11-14T04:00:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
