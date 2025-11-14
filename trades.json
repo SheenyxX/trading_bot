@@ -3379,5 +3379,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251114_030000_S_62d94d60": {
+        "trade_id": "BTCUSDT_1h_20251114_030000_S_62d94d60",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -1.33,
+        "entry_method": "EMA_middle",
+        "entry": 100950.1012952239,
+        "sl": 102384.90197825838,
+        "tp1": 98080.49992915493,
+        "tp2": 96645.69924612045,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-11-14T03:00:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
