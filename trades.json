@@ -3631,5 +3631,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251114_164500_S_de141ed3": {
+        "trade_id": "BTCUSDT_15m_20251114_164500_S_de141ed3",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "open",
+        "strategy": "strong_down",
+        "slope": -0.87,
+        "entry_method": "EMA_middle",
+        "entry": 96668.18982417812,
+        "sl": 97630.83745162042,
+        "tp1": 94742.89456929351,
+        "tp2": 93780.2469418512,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-11-14T16:45:00+00:00",
+        "entry_time": "2025-11-14T16:50:20.216294+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
