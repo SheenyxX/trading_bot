@@ -3595,7 +3595,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "1h",
         "type": "Short",
-        "status": "pending",
+        "status": "expired",
         "strategy": "strong_down",
         "slope": -1.72,
         "entry_method": "EMA_middle",
@@ -3606,8 +3606,8 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-11-14T15:00:00+00:00",
         "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-11-15T03:07:52.459954+00:00",
+        "exit_reason": "Signal expired",
         "duration_minutes": null,
         "outcome": null
     },
@@ -3742,7 +3742,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -0.93,
         "entry_method": "EMA_middle",
@@ -3753,10 +3753,10 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-11-14T23:30:00+00:00",
         "entry_time": "2025-11-14T23:38:50.236657+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-11-15T03:07:53.213122+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 209,
+        "outcome": "loss"
     },
     "BTCUSDT_1h_20251115_010000_S_3763ca4f": {
         "trade_id": "BTCUSDT_1h_20251115_010000_S_3763ca4f",
