@@ -4219,5 +4219,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251118_150000_S_f104990b": {
+        "trade_id": "BTCUSDT_1h_20251118_150000_S_f104990b",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Short",
+        "status": "open",
+        "strategy": "strong_down",
+        "slope": -1.02,
+        "entry_method": "EMA_middle",
+        "entry": 92400.40914293834,
+        "sl": 93821.30687695032,
+        "tp1": 89558.61367491439,
+        "tp2": 88137.71594090242,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-11-18T15:00:00+00:00",
+        "entry_time": "2025-11-18T15:45:35.376841+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
