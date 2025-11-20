@@ -4183,7 +4183,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "1h",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -1.01,
         "entry_method": "EMA_middle",
@@ -4194,10 +4194,10 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-11-18T15:00:00+00:00",
         "entry_time": "2025-11-18T15:23:50.850674+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-11-20T17:16:46.438740+00:00",
+        "exit_reason": "Take Profit",
+        "duration_minutes": 2992,
+        "outcome": "win"
     },
     "BTCUSDT_4h_20251118_120000_S_7ff14f2b": {
         "trade_id": "BTCUSDT_4h_20251118_120000_S_7ff14f2b",
@@ -4225,7 +4225,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "1h",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -1.02,
         "entry_method": "EMA_middle",
@@ -4236,17 +4236,17 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-11-18T15:00:00+00:00",
         "entry_time": "2025-11-18T15:45:35.376841+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-11-20T17:16:46.438740+00:00",
+        "exit_reason": "Take Profit",
+        "duration_minutes": 2971,
+        "outcome": "win"
     },
     "BTCUSDT_1h_20251118_160000_S_f2a28b89": {
         "trade_id": "BTCUSDT_1h_20251118_160000_S_f2a28b89",
         "symbol": "BTC/USDT",
         "timeframe": "1h",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -0.84,
         "entry_method": "EMA_middle",
@@ -4257,10 +4257,10 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-11-18T16:00:00+00:00",
         "entry_time": "2025-11-18T16:53:57.674205+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-11-20T17:16:46.438740+00:00",
+        "exit_reason": "Take Profit",
+        "duration_minutes": 2902,
+        "outcome": "win"
     },
     "BTCUSDT_15m_20251118_183000_L_d1a74483": {
         "trade_id": "BTCUSDT_15m_20251118_183000_L_d1a74483",
