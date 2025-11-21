@@ -4954,5 +4954,26 @@
         "exit_reason": "Stop Loss",
         "duration_minutes": 0,
         "outcome": "loss"
+    },
+    "BTCUSDT_1h_20251121_180000_S_7de5e9ac": {
+        "trade_id": "BTCUSDT_1h_20251121_180000_S_7de5e9ac",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -2.19,
+        "entry_method": "EMA_middle",
+        "entry": 86126.88490386937,
+        "sl": 88398.11388720114,
+        "tp1": 81584.42693720585,
+        "tp2": 79313.19795387409,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-11-21T18:00:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
