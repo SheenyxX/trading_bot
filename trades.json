@@ -4771,7 +4771,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -2.18,
         "entry_method": "EMA_middle",
@@ -4782,10 +4782,10 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-11-21T11:15:00+00:00",
         "entry_time": "2025-11-21T11:17:42.221316+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-11-21T17:18:33.934347+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 360,
+        "outcome": "loss"
     },
     "BTCUSDT_15m_20251121_123000_S_b394496c": {
         "trade_id": "BTCUSDT_15m_20251121_123000_S_b394496c",
@@ -4897,7 +4897,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -1.11,
         "entry_method": "EMA_middle",
@@ -4908,17 +4908,17 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-11-21T15:15:00+00:00",
         "entry_time": "2025-11-21T15:19:18.391996+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-11-21T17:18:33.934347+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 119,
+        "outcome": "loss"
     },
     "BTCUSDT_15m_20251121_153000_S_cdde36ca": {
         "trade_id": "BTCUSDT_15m_20251121_153000_S_cdde36ca",
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -1.07,
         "entry_method": "EMA_middle",
@@ -4929,17 +4929,17 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-11-21T15:30:00+00:00",
         "entry_time": "2025-11-21T15:37:39.153782+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-11-21T17:18:33.934347+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 100,
+        "outcome": "loss"
     },
     "BTCUSDT_15m_20251121_161500_S_535ee3a6": {
         "trade_id": "BTCUSDT_15m_20251121_161500_S_535ee3a6",
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "pending",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -0.93,
         "entry_method": "EMA_middle",
@@ -4949,10 +4949,10 @@
         "tp2": 80206.61736579434,
         "rr_ratio": 2.0,
         "signal_time": "2025-11-21T16:15:00+00:00",
-        "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "entry_time": "2025-11-21T17:18:33.934347+00:00",
+        "exit_time": "2025-11-21T17:18:36.400026+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 0,
+        "outcome": "loss"
     }
 }
