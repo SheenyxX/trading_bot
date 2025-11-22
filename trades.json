@@ -5002,7 +5002,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "1h",
         "type": "Short",
-        "status": "pending",
+        "status": "expired",
         "strategy": "strong_down",
         "slope": -1.01,
         "entry_method": "EMA_middle",
@@ -5013,8 +5013,8 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-11-22T10:00:00+00:00",
         "entry_time": null,
-        "exit_time": null,
-        "exit_reason": null,
+        "exit_time": "2025-11-22T22:19:12.533159+00:00",
+        "exit_reason": "Signal expired",
         "duration_minutes": null,
         "outcome": null
     }
