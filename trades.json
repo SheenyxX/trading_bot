@@ -5590,7 +5590,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -0.83,
         "entry_method": "EMA_middle",
@@ -5601,17 +5601,17 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-12-01T14:45:00+00:00",
         "entry_time": "2025-12-01T14:48:46.529339+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-12-01T15:44:56.425123+00:00",
+        "exit_reason": "Take Profit",
+        "duration_minutes": 56,
+        "outcome": "win"
     },
     "BTCUSDT_15m_20251201_151500_S_63760eeb": {
         "trade_id": "BTCUSDT_15m_20251201_151500_S_63760eeb",
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_down",
         "slope": -0.87,
         "entry_method": "EMA_middle",
@@ -5622,9 +5622,9 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-12-01T15:15:00+00:00",
         "entry_time": "2025-12-01T15:23:45.816248+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-12-01T15:44:56.425123+00:00",
+        "exit_reason": "Take Profit",
+        "duration_minutes": 21,
+        "outcome": "win"
     }
 }
