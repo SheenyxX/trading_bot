@@ -5626,5 +5626,26 @@
         "exit_reason": "Take Profit",
         "duration_minutes": 21,
         "outcome": "win"
+    },
+    "BTCUSDT_15m_20251201_163000_S_a48bd903": {
+        "trade_id": "BTCUSDT_15m_20251201_163000_S_a48bd903",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -1.14,
+        "entry_method": "EMA_middle",
+        "entry": 85785.18897187247,
+        "sl": 86512.91566876479,
+        "tp1": 84329.73557808783,
+        "tp2": 83602.0088811955,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-12-01T16:30:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
