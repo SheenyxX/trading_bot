@@ -5794,5 +5794,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251202_040000_S_aa27988f": {
+        "trade_id": "BTCUSDT_1h_20251202_040000_S_aa27988f",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Short",
+        "status": "open",
+        "strategy": "strong_down",
+        "slope": -0.86,
+        "entry_method": "EMA_middle",
+        "entry": 87099.30916247368,
+        "sl": 88198.23190476319,
+        "tp1": 84901.46367789467,
+        "tp2": 80646.7,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-12-02T04:00:00+00:00",
+        "entry_time": "2025-12-02T04:03:22.013643+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
