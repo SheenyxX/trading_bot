@@ -6262,7 +6262,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Short",
-        "status": "open",
+        "status": "closed",
         "strategy": "weak_down",
         "slope": -0.38,
         "entry_method": "liquidity_zone",
@@ -6273,10 +6273,10 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-12-04T17:45:00+00:00",
         "entry_time": "2025-12-04T17:46:47.808815+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-12-05T03:19:46.713530+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 572,
+        "outcome": "loss"
     },
     "BTCUSDT_15m_20251204_193000_S_ba4d27c6": {
         "trade_id": "BTCUSDT_15m_20251204_193000_S_ba4d27c6",
