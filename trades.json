@@ -6424,5 +6424,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251205_201500_S_ceda6895": {
+        "trade_id": "BTCUSDT_15m_20251205_201500_S_ceda6895",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -1.24,
+        "entry_method": "EMA_middle",
+        "entry": 89937.52107466364,
+        "sl": 90589.24778593266,
+        "tp1": 88634.06765212561,
+        "tp2": 83827.0,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-12-05T20:15:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
