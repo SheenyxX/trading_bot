@@ -6655,5 +6655,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251209_053000_S_8763d1d2": {
+        "trade_id": "BTCUSDT_15m_20251209_053000_S_8763d1d2",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "open",
+        "strategy": "weak_down",
+        "slope": -0.35,
+        "entry_method": "liquidity_zone",
+        "entry": 90280.4,
+        "sl": 90686.64730580704,
+        "tp1": 89467.9053883859,
+        "tp2": 88921.6,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-12-09T05:30:00+00:00",
+        "entry_time": "2025-12-09T05:44:46.604502+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
