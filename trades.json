@@ -6745,7 +6745,7 @@
         "symbol": "BTC/USDT",
         "timeframe": "15m",
         "type": "Long",
-        "status": "open",
+        "status": "closed",
         "strategy": "strong_up",
         "slope": 1.13,
         "entry_method": "EMA_middle",
@@ -6756,10 +6756,10 @@
         "rr_ratio": 2.0,
         "signal_time": "2025-12-09T22:15:00+00:00",
         "entry_time": "2025-12-09T22:21:07.510635+00:00",
-        "exit_time": null,
-        "exit_reason": null,
-        "duration_minutes": null,
-        "outcome": null
+        "exit_time": "2025-12-10T11:40:33.631968+00:00",
+        "exit_reason": "Stop Loss",
+        "duration_minutes": 799,
+        "outcome": "loss"
     },
     "BTCUSDT_15m_20251209_223000_L_bd8905e1": {
         "trade_id": "BTCUSDT_15m_20251209_223000_L_bd8905e1",
