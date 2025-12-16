@@ -7306,5 +7306,26 @@
         "exit_reason": "Signal expired",
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251216_030000_S_a78d00be": {
+        "trade_id": "BTCUSDT_1h_20251216_030000_S_a78d00be",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -1.35,
+        "entry_method": "EMA_middle",
+        "entry": 87573.92782080223,
+        "sl": 88474.85315659553,
+        "tp1": 85772.07714921562,
+        "tp2": 83827.0,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-12-16T03:00:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
