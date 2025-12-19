@@ -7621,5 +7621,26 @@
         "exit_reason": "Signal expired",
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251219_073000_L_5a5c6cda": {
+        "trade_id": "BTCUSDT_15m_20251219_073000_L_5a5c6cda",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Long",
+        "status": "open",
+        "strategy": "strong_up",
+        "slope": 0.83,
+        "entry_method": "EMA_middle",
+        "entry": 86839.21458303579,
+        "sl": 86276.2291209971,
+        "tp1": 87965.18550711317,
+        "tp2": 89477.0,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-12-19T07:30:00+00:00",
+        "entry_time": "2025-12-19T07:42:01.544260+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
