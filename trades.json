@@ -7726,5 +7726,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251219_190000_L_f9332edb": {
+        "trade_id": "BTCUSDT_1h_20251219_190000_L_f9332edb",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Long",
+        "status": "open",
+        "strategy": "weak_up",
+        "slope": 0.42,
+        "entry_method": "liquidity_zone",
+        "entry": 87719.0,
+        "sl": 86490.36228275302,
+        "tp1": 90176.27543449396,
+        "tp2": 94152.7,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-12-19T19:00:00+00:00",
+        "entry_time": "2025-12-19T19:38:50.990520+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
