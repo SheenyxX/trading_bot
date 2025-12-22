@@ -7894,5 +7894,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251222_231500_S_65005f68": {
+        "trade_id": "BTCUSDT_15m_20251222_231500_S_65005f68",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "open",
+        "strategy": "weak_down",
+        "slope": -0.64,
+        "entry_method": "liquidity_zone",
+        "entry": 88568.6,
+        "sl": 88970.66952670482,
+        "tp1": 87764.46094659038,
+        "tp2": 84461.0,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-12-22T23:15:00+00:00",
+        "entry_time": "2025-12-22T23:20:56.593086+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
