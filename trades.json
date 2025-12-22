@@ -7810,5 +7810,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_1h_20251222_180000_L_28e2077b": {
+        "trade_id": "BTCUSDT_1h_20251222_180000_L_28e2077b",
+        "symbol": "BTC/USDT",
+        "timeframe": "1h",
+        "type": "Long",
+        "status": "open",
+        "strategy": "weak_up",
+        "slope": 0.56,
+        "entry_method": "liquidity_zone",
+        "entry": 89260.9,
+        "sl": 88473.45086249248,
+        "tp1": 90835.79827501503,
+        "tp2": 94586.1,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-12-22T18:00:00+00:00",
+        "entry_time": "2025-12-22T18:32:47.614201+00:00",
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
