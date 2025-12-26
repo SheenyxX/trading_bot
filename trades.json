@@ -7957,5 +7957,26 @@
         "exit_reason": "Stop Loss",
         "duration_minutes": 4507,
         "outcome": "loss"
+    },
+    "BTCUSDT_15m_20251226_191500_S_15f21645": {
+        "trade_id": "BTCUSDT_15m_20251226_191500_S_15f21645",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Short",
+        "status": "pending",
+        "strategy": "strong_down",
+        "slope": -0.87,
+        "entry_method": "EMA_middle",
+        "entry": 87669.38463096827,
+        "sl": 88006.02763026279,
+        "tp1": 86996.09863237923,
+        "tp2": 86602.5,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-12-26T19:15:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
