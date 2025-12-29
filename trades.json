@@ -7999,5 +7999,26 @@
         "exit_reason": null,
         "duration_minutes": null,
         "outcome": null
+    },
+    "BTCUSDT_15m_20251229_063000_L_24d73c75": {
+        "trade_id": "BTCUSDT_15m_20251229_063000_L_24d73c75",
+        "symbol": "BTC/USDT",
+        "timeframe": "15m",
+        "type": "Long",
+        "status": "pending",
+        "strategy": "strong_up",
+        "slope": 1.23,
+        "entry_method": "EMA_middle",
+        "entry": 89287.21724648825,
+        "sl": 88960.6786603132,
+        "tp1": 89940.29441883833,
+        "tp2": 90266.83300501337,
+        "rr_ratio": 2.0,
+        "signal_time": "2025-12-29T06:30:00+00:00",
+        "entry_time": null,
+        "exit_time": null,
+        "exit_reason": null,
+        "duration_minutes": null,
+        "outcome": null
     }
 }
